@@ -7,6 +7,10 @@ An application whose idea is to help beginner guitarists learn guitar scales and
 My dream is to ultimately combine the functionalities of websites such as https://www.songsterr.com/ or 
 https://www.ultimate-guitar.com/ and the Guitar Pro application - https://www.guitar-pro.com .
 
+# Project planning
+
+https://trello.com/b/UZoYc3Xo/guitar-app
+
 # Technology stack
 * Java 11
 * Spring Boot
