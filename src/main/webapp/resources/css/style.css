@@ -39,3 +39,14 @@ nav li:hover {
     background-color: green;
     border-color: white;
 }
+
+header h1, header p {
+    background-color: #4d79ff;
+    text-align: center;
+    text-shadow: 1px -1px silver;
+    letter-spacing: 2px;
+}
+
+header p {
+    color: #004d00;
+}
