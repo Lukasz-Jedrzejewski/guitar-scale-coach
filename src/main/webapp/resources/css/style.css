@@ -3,3 +3,39 @@
     padding: 0;
     box-sizing: border-box;
 }
+
+a {
+    text-decoration: none;
+    display: block;
+}
+
+li {
+    list-style-type: none;
+}
+
+nav {
+    margin: 0;
+    padding: 0;
+    background-color: #000345;
+}
+
+nav ul {
+    display: flex;
+    justify-content: center;
+    flex-direction: row;
+}
+
+nav li {
+    padding: 10px;
+}
+
+nav a {
+    font-size: 25px;
+    display: block;
+    color: white;
+}
+
+nav li:hover {
+    background-color: green;
+    border-color: white;
+}
