@@ -45,8 +45,9 @@ header h1, header p {
     text-align: center;
     text-shadow: 1px -1px silver;
     letter-spacing: 2px;
+    padding: 0 0 5px;
 }
 
 header p {
-    color: #004d00;
+    color: white;
 }
