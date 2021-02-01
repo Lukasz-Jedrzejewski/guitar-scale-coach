@@ -55,6 +55,6 @@
   /* text-shadow: 1px 1px 1px rgba(127, 127, 127, 0.3); */
 }
  
-.icon-github-circled:before { content: '\f09b'; } /* '' */
-.icon-facebook-rect:before { content: '\f301'; } /* '' */
-.icon-linkedin-rect:before { content: '\f312'; } /* '' */
+.icon-github-circled:before { content: '\f09b'; font-size: 25px; } /* '' */
+.icon-facebook-rect:before { content: '\f301'; font-size: 25px; } /* '' */
+.icon-linkedin-rect:before { content: '\f312'; font-size: 25px; } /* '' */
