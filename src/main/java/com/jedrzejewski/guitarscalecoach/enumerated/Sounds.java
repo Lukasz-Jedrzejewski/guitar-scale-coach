@@ -1,4 +1,4 @@
-package com.jedrzejewski.guitarscalecoach.model;
+package com.jedrzejewski.guitarscalecoach.enumerated;
 
 public enum Sounds {
 
