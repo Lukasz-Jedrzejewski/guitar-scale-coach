@@ -8,4 +8,6 @@ import java.util.Map;
 public interface GuitarModelService {
 
     Map<Integer, Sounds> createTuning (List<Sounds> sounds);
+    List<Integer> getNumberOfStringsEnumValues();
+    List<Integer> getNumberOfFretsEnumValues();
 }
