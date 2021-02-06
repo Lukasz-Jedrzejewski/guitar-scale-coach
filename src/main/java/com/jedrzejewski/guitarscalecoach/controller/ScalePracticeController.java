@@ -11,8 +11,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import java.util.ArrayList;
-import java.util.Arrays;
+import java.lang.reflect.InvocationTargetException;
 import java.util.List;
 
 @Controller
@@ -23,13 +22,13 @@ public class ScalePracticeController {
     private final GuitarModelService guitarModelService;
 
     @ModelAttribute("numberOfStrings")
-    public List<Integer> numberOfStrings() {
-        return guitarModelService.getNumberOfStringsEnumValues();
+    public List<Integer> numberOfStrings() throws NoSuchMethodException, IllegalAccessException, InvocationTargetException {
+        return guitarModelService.getEnumValues(NumberOfStrings.class);
     }
 
     @ModelAttribute("numberOfFrets")
-    public List<Integer> numberOfFrets() {
-        return guitarModelService.getNumberOfFretsEnumValues();
+    public List<Integer> numberOfFrets() throws NoSuchMethodException, IllegalAccessException, InvocationTargetException {
+        return guitarModelService.getEnumValues(NumberOfFrets.class);
     }
 
     @GetMapping("/guitar-selection")

@@ -6,6 +6,8 @@ import com.jedrzejewski.guitarscalecoach.enumerated.Sounds;
 import com.jedrzejewski.guitarscalecoach.service.GuitarModelService;
 import org.springframework.stereotype.Service;
 
+import java.lang.reflect.InvocationTargetException;
+import java.lang.reflect.Method;
 import java.util.*;
 
 @Service
@@ -15,28 +17,20 @@ public class GuitarModelServiceImpl implements GuitarModelService {
     public Map<Integer, Sounds> createTuning(List<Sounds> sounds) {
         Map<Integer, Sounds> tuning = new HashMap<>();
         for (int i = 0; i < sounds.size(); i++) {
-            tuning.put(i+1, sounds.get(i));
+            tuning.put(i + 1, sounds.get(i));
         }
         return tuning;
     }
 
     @Override
-    public List<Integer> getNumberOfStringsEnumValues() {
-        List<NumberOfStrings> numberOfStrings = Arrays.asList(NumberOfStrings.values());
+    public List<Integer> getEnumValues(Class<? extends Enum> cl) throws NoSuchMethodException, InvocationTargetException, IllegalAccessException {
+        EnumSet enumSet = EnumSet.allOf(cl);
         List<Integer> numbers = new ArrayList<>();
-        for (NumberOfStrings n : numberOfStrings) {
-            numbers.add(n.getVal());
+        for (Object o : enumSet) {
+            Method getVal = cl.getMethod("getVal");
+            numbers.add((Integer) getVal.invoke(o));
         }
         return numbers;
     }
 
-    @Override
-    public List<Integer> getNumberOfFretsEnumValues() {
-        List<NumberOfFrets> numberOfFrets = Arrays.asList(NumberOfFrets.values());
-        List<Integer> numbers = new ArrayList<>();
-        for (NumberOfFrets n : numberOfFrets) {
-            numbers.add(n.getVal());
-        }
-        return numbers;
-    }
 }

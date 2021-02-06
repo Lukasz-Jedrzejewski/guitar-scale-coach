@@ -6,13 +6,9 @@ public enum NumberOfFrets {
     TWENTY_TWO(22),
     TWENTY_FOUR(24);
 
-    private int numberOfFrets;
+    private int frVal;
 
-    NumberOfFrets(int numberOfFrets) {
-        this.numberOfFrets = numberOfFrets;
-    }
+    NumberOfFrets(int frVal) { this.frVal = frVal; }
 
-    public int getVal() {
-        return this.numberOfFrets;
-    }
+    public int getVal() { return this.frVal; }
 }

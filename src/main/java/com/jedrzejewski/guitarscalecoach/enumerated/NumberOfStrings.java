@@ -10,14 +10,14 @@ public enum NumberOfStrings {
     TEN(10),
     TWELVE(12);
 
-    private int numberOfStrings;
+    private int stVal;
 
-    NumberOfStrings(int numberOfStrings) {
-        this.numberOfStrings = numberOfStrings;
+    NumberOfStrings(int stVal) {
+        this.stVal = stVal;
     }
 
     public int getVal() {
-        return this.numberOfStrings;
+        return this.stVal;
     }
-
 }
+
