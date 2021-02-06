@@ -19,11 +19,37 @@
             <form:form method="post" action="/practice/guitar-selection" modelAttribute="guitar">
                 <div class="form-field">
                     <label>Choose number of strings</label>
-                    <form:select path="numberOfStrings" items="${numberOfStrings}" multiple="false"/>
+                    <form:select id="str" path="numberOfStrings" multiple="false">
+                        <c:forEach items="${numberOfStrings}" var="strings">
+                            <c:choose>
+                                <c:when test="${strings eq 6}">
+                                    <option value="${strings}" selected="true">${strings}</option>
+                                </c:when>
+                                <c:otherwise>
+                                    <option value="${strings}">${strings}</option>
+                                </c:otherwise>
+                            </c:choose>
+                        </c:forEach>
+                    </form:select>
                 </div>
                 <div class="form-field">
                     <label>Choose number of frets</label>
-                    <form:select path="numberOfFrets" items="${numberOfFrets}" multiple="false"/>
+                    <form:select id="fr" path="numberOfFrets" multiple="false">
+                        <c:forEach items="${numberOfFrets}" var="frets" varStatus="status">
+                            <c:choose>
+                                <c:when test="${frets eq 24}">
+                                    <option value="${frets}" selected="true">${frets}</option>
+                                </c:when>
+                                <c:otherwise>
+                                    <option value="${frets}">${frets}</option>
+                                </c:otherwise>
+                            </c:choose>
+                        </c:forEach>
+                    </form:select>
+                </div>
+                <div class="form-field">
+                    <label>Choose your tuning</label>
+
                 </div>
             </form:form>
         </div>
