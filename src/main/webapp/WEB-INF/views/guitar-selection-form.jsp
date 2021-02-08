@@ -19,7 +19,7 @@
             <form:form method="post" action="/practice/guitar-selection" modelAttribute="guitar">
                 <div class="form-field">
                     <label>Choose number of strings</label>
-                    <form:select id="str" path="numberOfStrings" multiple="false">
+                    <form:select id="str" onchange="changeSelected(this)" path="numberOfStrings" multiple="false">
                         <c:forEach items="${numberOfStrings}" var="strings">
                             <c:choose>
                                 <c:when test="${strings eq 6}">
@@ -34,7 +34,7 @@
                 </div>
                 <div class="form-field">
                     <label>Choose number of frets</label>
-                    <form:select id="fr" path="numberOfFrets" multiple="false">
+                    <form:select id="fr" onchange="changeSelected(this)" path="numberOfFrets" multiple="false">
                         <c:forEach items="${numberOfFrets}" var="frets" varStatus="status">
                             <c:choose>
                                 <c:when test="${frets eq 24}">
@@ -49,7 +49,13 @@
                 </div>
                 <div class="form-field">
                     <label>Choose your tuning</label>
-
+                        <script>
+                            function changeSelected(selectObj) {
+                                var index = selectObj.selectedIndex;
+                                var val = selectObj.options[index].value;
+                                console.log(val);
+                            }
+                        </script>
                 </div>
             </form:form>
         </div>
