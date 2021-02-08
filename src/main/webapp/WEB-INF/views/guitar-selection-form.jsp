@@ -19,47 +19,30 @@
             <form:form method="post" action="/practice/guitar-selection" modelAttribute="guitar">
                 <div class="form-field">
                     <label>Choose number of strings</label>
-                    <form:select id="str" onchange="changeSelected(this)" path="numberOfStrings" multiple="false">
+                    <form:select id="str" onchange="changeSelected(this);" path="numberOfStrings" multiple="false">
+                        <option disabled selected value> -- select number of strings -- </option>
                         <c:forEach items="${numberOfStrings}" var="strings">
-                            <c:choose>
-                                <c:when test="${strings eq 6}">
-                                    <option value="${strings}" selected="true">${strings}</option>
-                                </c:when>
-                                <c:otherwise>
-                                    <option value="${strings}">${strings}</option>
-                                </c:otherwise>
-                            </c:choose>
+                            <option value="${strings}">${strings}</option>
                         </c:forEach>
                     </form:select>
                 </div>
                 <div class="form-field">
                     <label>Choose number of frets</label>
                     <form:select id="fr" onchange="changeSelected(this)" path="numberOfFrets" multiple="false">
+                        <option disabled selected value> -- select number of frets -- </option>
                         <c:forEach items="${numberOfFrets}" var="frets" varStatus="status">
-                            <c:choose>
-                                <c:when test="${frets eq 24}">
-                                    <option value="${frets}" selected="true">${frets}</option>
-                                </c:when>
-                                <c:otherwise>
-                                    <option value="${frets}">${frets}</option>
-                                </c:otherwise>
-                            </c:choose>
+                            <option value="${frets}">${frets}</option>
                         </c:forEach>
                     </form:select>
                 </div>
                 <div class="form-field">
                     <label>Choose your tuning</label>
-                        <script>
-                            function changeSelected(selectObj) {
-                                var index = selectObj.selectedIndex;
-                                var val = selectObj.options[index].value;
-                                console.log(val);
-                            }
-                        </script>
                 </div>
             </form:form>
         </div>
     </section>
     <%@include file="footer.jsp"%>
+
+    <script type="text/javascript" src="<c:url value="/resources/js/app.js"/>"></script>
 </body>
 </html>
