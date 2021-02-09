@@ -15,6 +15,14 @@ public enum Sounds {
     G("G"),
     GIS("G#");
 
+    private String sound;
+
     Sounds(String sound) {
+        this.sound = sound;
+    }
+
+    @Override
+    public String toString() {
+        return sound;
     }
 }

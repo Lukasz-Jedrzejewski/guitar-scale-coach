@@ -2,6 +2,7 @@ package com.jedrzejewski.guitarscalecoach.controller;
 
 import com.jedrzejewski.guitarscalecoach.enumerated.NumberOfFrets;
 import com.jedrzejewski.guitarscalecoach.enumerated.NumberOfStrings;
+import com.jedrzejewski.guitarscalecoach.enumerated.Sounds;
 import com.jedrzejewski.guitarscalecoach.model.Guitar;
 import com.jedrzejewski.guitarscalecoach.service.GuitarModelService;
 import lombok.AllArgsConstructor;
@@ -12,6 +13,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import java.lang.reflect.InvocationTargetException;
+import java.util.Arrays;
 import java.util.List;
 
 @Controller
@@ -29,6 +31,11 @@ public class ScalePracticeController {
     @ModelAttribute("numberOfFrets")
     public List<Integer> numberOfFrets() throws NoSuchMethodException, IllegalAccessException, InvocationTargetException {
         return guitarModelService.getEnumValues(NumberOfFrets.class);
+    }
+
+    @ModelAttribute("sounds")
+    public List sounds() {
+        return Arrays.asList(Sounds.values());
     }
 
     @GetMapping("/guitar-selection")
