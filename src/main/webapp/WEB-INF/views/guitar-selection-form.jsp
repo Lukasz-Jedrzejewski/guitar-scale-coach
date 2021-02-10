@@ -38,6 +38,11 @@
                 <div class="form-field">
                     <label>Choose your tuning</label>
                 </div>
+                <div class="div-table">
+                    <table class="table--">
+
+                    </table>
+                </div>
             </form:form>
         </div>
     </section>
