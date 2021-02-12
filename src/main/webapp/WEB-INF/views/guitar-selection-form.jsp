@@ -36,14 +36,12 @@
                     </form:select>
                 </div>
                 <div class="form-field" id="tune">
-                    <label>Choose your tuning</label>
-                    <input type="text" name="${tuning.key}"/>
                     <form:select path="tuning" multiple="false">
                         <option disabled selected value> -- select the sound -- </option>
                         <c:forEach var="sound" items="${sounds}">
                             <option value="${sound}">${sound}</option>
                         </c:forEach>
-                     </form:select>
+                    </form:select>
                 </div>
                 <div class="div-table">
                     <table class="table--">

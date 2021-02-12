@@ -20,6 +20,7 @@ document.addEventListener("DOMContentLoaded", function() {
         }
         p.style.display = "none";
         createFretboard();
+        createTuningFields();
     }
 
     function createFretboard() {
@@ -44,6 +45,28 @@ document.addEventListener("DOMContentLoaded", function() {
         tblBody.appendChild(tr);
     }
     tab.appendChild(tblBody);
+    }
+
+    function createTuningFields() {
+        var strVal = document.querySelector("#currentValue-str").innerHTML;
+        var tune = document.querySelector("#tune");
+        var label = document.createElement("label");
+        label.innerHTML = "Choose your tuning";
+        tune.appendChild(label);
+
+        for (i = 1; i < parseInt(strVal)+1; i++) {
+            var dot = document.createElement("div");
+            dot.className = "dot";
+            dot.style.width = i*3;
+            dot.style.height = i*3;
+            var input = document.createElement("hidden");
+            input.type = "text";
+            input.name = "${tuning.key}";
+            input.id = i;
+            input.value = i;
+            tune.insertBefore(input, tune.firstChild);
+            tune.insertBefore(dot, tune.firstChild);
+        }
     }
 
 });

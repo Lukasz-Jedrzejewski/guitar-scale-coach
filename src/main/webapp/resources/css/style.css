@@ -88,3 +88,8 @@ footer p {
 #fb:hover, #in:hover, #git:hover {
     opacity: 1;
 }
+
+.dot {
+    background-color: black;
+    border-radius: 50%;
+}
