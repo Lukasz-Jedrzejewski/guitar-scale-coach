@@ -4,7 +4,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
     function changeSelected(selectObj) {
         var index = selectObj.selectedIndex;
-        var val = selectObj.options[index].value;
+        var val = selectObj.options[index].innerHTML;
         var p = document.createElement("p");
         p.id = "currentValue-"+selectObj.id;
         /*
@@ -19,6 +19,11 @@ document.addEventListener("DOMContentLoaded", function() {
             cur.innerHTML = val;
         }
         p.style.display = "none";
+
+        /**
+        need to work on displaying, duplicating elements when changing input data.
+        */
+
         createFretboard();
         createTuningFields();
     }
@@ -61,16 +66,10 @@ document.addEventListener("DOMContentLoaded", function() {
             dot.className = "dot";
             dot.style.width = i*3;
             dot.style.height = i*3;
-            var input = document.createElement("hidden");
-            input.type = "text";
-            input.name = "${tuning.key}";
-            input.id = i;
-            input.value = i;
             var clone = ts.cloneNode(true);
             clone.className = "t-select";
             clone.id = i;
             clone.style.display = "block";
-            tune.appendChild(input);
             tune.appendChild(dot);
             tune.appendChild(clone);
         }

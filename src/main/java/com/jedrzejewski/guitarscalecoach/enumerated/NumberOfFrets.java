@@ -10,5 +10,8 @@ public enum NumberOfFrets {
 
     NumberOfFrets(int frVal) { this.frVal = frVal; }
 
-    public int getVal() { return this.frVal; }
+    @Override
+    public String toString() {
+        return Integer.valueOf(frVal).toString();
+    }
 }

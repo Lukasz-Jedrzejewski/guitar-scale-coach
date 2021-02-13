@@ -4,14 +4,13 @@ import com.jedrzejewski.guitarscalecoach.enumerated.NumberOfFrets;
 import com.jedrzejewski.guitarscalecoach.enumerated.NumberOfStrings;
 import com.jedrzejewski.guitarscalecoach.enumerated.Sounds;
 
-import java.util.HashMap;
-import java.util.Map;
+import java.util.List;
 
 public class Guitar {
 
     private NumberOfStrings numberOfStrings;
     private NumberOfFrets numberOfFrets;
-    private Map<Integer, Sounds> tuning = new HashMap<Integer, Sounds>();
+    private List<Sounds> tuning;
 
     public NumberOfStrings getNumberOfStrings() {
         return numberOfStrings;
@@ -29,11 +28,11 @@ public class Guitar {
         this.numberOfFrets = numberOfFrets;
     }
 
-    public Map<Integer, Sounds> getTuning() {
+    public List<Sounds> getTuning() {
         return tuning;
     }
 
-    public void setTuning(Map<Integer, Sounds> tuning) {
+    public void setTuning(List<Sounds> tuning) {
         this.tuning = tuning;
     }
 

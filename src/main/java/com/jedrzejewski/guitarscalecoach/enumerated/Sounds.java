@@ -17,8 +17,8 @@ public enum Sounds {
 
     private String sound;
 
-    Sounds(String sound) {
-        this.sound = sound;
+    Sounds(String str) {
+        this.sound = str;
     }
 
     @Override

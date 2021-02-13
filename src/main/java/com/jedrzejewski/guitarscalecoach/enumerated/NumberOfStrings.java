@@ -16,8 +16,9 @@ public enum NumberOfStrings {
         this.stVal = stVal;
     }
 
-    public int getVal() {
-        return this.stVal;
+    @Override
+    public String toString() {
+        return Integer.valueOf(stVal).toString();
     }
 }
 
