@@ -50,6 +50,8 @@ document.addEventListener("DOMContentLoaded", function() {
     function createTuningFields() {
         var strVal = document.querySelector("#currentValue-str").innerHTML;
         var tune = document.querySelector("#tune");
+        var ts = document.querySelector("#t-s")
+        var selection = document.querySelector("#selection");
         var label = document.createElement("label");
         label.innerHTML = "Choose your tuning";
         tune.appendChild(label);
@@ -64,8 +66,13 @@ document.addEventListener("DOMContentLoaded", function() {
             input.name = "${tuning.key}";
             input.id = i;
             input.value = i;
-            tune.insertBefore(input, tune.firstChild);
-            tune.insertBefore(dot, tune.firstChild);
+            var clone = ts.cloneNode(true);
+            clone.className = "t-select";
+            clone.id = i;
+            clone.style.display = "block";
+            tune.appendChild(input);
+            tune.appendChild(dot);
+            tune.appendChild(clone);
         }
     }
 

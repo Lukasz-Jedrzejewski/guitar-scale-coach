@@ -15,7 +15,7 @@
     <%@include file="header.jsp"%>
     <%@include file="navigation-bar.jsp"%>
     <section>
-        <div>
+        <div id="selection">
             <form:form method="post" action="/practice/guitar-selection" modelAttribute="guitar">
                 <div class="form-field">
                     <label>Choose number of strings</label>
@@ -36,7 +36,7 @@
                     </form:select>
                 </div>
                 <div class="form-field" id="tune">
-                    <form:select path="tuning" multiple="false">
+                    <form:select path="tuning" multiple="false" id="t-s" style="display: none;">
                         <option disabled selected value> -- select the sound -- </option>
                         <c:forEach var="sound" items="${sounds}">
                             <option value="${sound}">${sound}</option>
