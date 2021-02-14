@@ -1,6 +1,7 @@
 document.addEventListener("DOMContentLoaded", function() {
 
     window.changeSelected = changeSelected;
+    window.fillIn = fillIn;
 
     function changeSelected(selectObj) {
         var index = selectObj.selectedIndex;
@@ -56,7 +57,6 @@ document.addEventListener("DOMContentLoaded", function() {
         var strVal = document.querySelector("#currentValue-str").innerHTML;
         var tune = document.querySelector("#tune");
         var ts = document.querySelector("#t-s")
-        var selection = document.querySelector("#selection");
         var label = document.createElement("label");
         label.innerHTML = "Choose your tuning";
         tune.appendChild(label);
@@ -64,6 +64,9 @@ document.addEventListener("DOMContentLoaded", function() {
         for (i = 1; i < parseInt(strVal)+1; i++) {
             var dot = document.createElement("div");
             dot.className = "dot";
+            /*
+            need to work with dot sizes
+            */
             dot.style.width = i*3;
             dot.style.height = i*3;
             var clone = ts.cloneNode(true);
@@ -74,5 +77,24 @@ document.addEventListener("DOMContentLoaded", function() {
             tune.appendChild(clone);
         }
     }
+
+    function readSounds() {
+        var opts = document.querySelector("#t-s").options;
+        var sounds = [];
+        for (i = 0; i < opts.length; i++) {
+            var item = opts[i].innerHTML;
+            if (item.length <= 2) {
+                sounds.push(item);
+            }
+        }
+        return sounds;
+    }
+
+    function fillIn(selectObj) {
+        console.log(s);
+
+    }
+
+    var s = readSounds();
 
 });
