@@ -82,21 +82,26 @@ document.addEventListener("DOMContentLoaded", function() {
     }
 
     function fillIn(selectObj) {
-        var ind = selectObj.selectedIndex;
-        var ov = selectObj.options[ind].innerHTML;
+        var selectedIndex = selectObj.selectedIndex;
+        var selectedValue = selectObj.options[selectedIndex].innerHTML;
         var frVal = document.querySelector("#currentValue-fr").innerHTML;
         var tblBody = document.querySelector("tbody");
-        var index = s.indexOf(ov)+1;
+        var currentSelect = selectObj.id;
+        var index = soundsTable.indexOf(selectedValue)+1;
         var tr = document.createElement("tr");
-        /*
-            need to work with data in cells, when other value is selected
-        */
+        var currTr = document.querySelector('tbody').children;
+        for (i = 0; i < currTr.length; i++) {
+            if (currTr[i].id == currentSelect) {
+                currTr[i].remove();
+            }
+        }
         for (j = 0; j < frVal; j++) {
+            tr.id = currentSelect;
             var cell = document.createElement("td");
-            if (index >= s.length) {
+            if (index >= soundsTable.length) {
                 index = 0;
             }
-            var cellText = document.createTextNode(s[index])
+            var cellText = document.createTextNode(soundsTable[index])
             index++;
             cell.appendChild(cellText);
             tr.appendChild(cell);
@@ -104,6 +109,6 @@ document.addEventListener("DOMContentLoaded", function() {
         tblBody.appendChild(tr);
     }
 
-    var s = readSounds();
+    var soundsTable = readSounds();
 
 });
