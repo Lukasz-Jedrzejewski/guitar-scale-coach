@@ -38,6 +38,7 @@ document.addEventListener("DOMContentLoaded", function() {
     var tblBody = document.createElement("tbody");
     for (row = 0; row < parseInt(strVal)+1; row++) {
         var tr = document.createElement("tr");
+        tr.id = row;
         for (col = 1; col < parseInt(frVal)+1; col++) {
             var cell = document.createElement("td");
             if (row != 0) {
@@ -91,8 +92,19 @@ document.addEventListener("DOMContentLoaded", function() {
     }
 
     function fillIn(selectObj) {
-        console.log(s);
-
+        var ind = selectObj.selectedIndex;
+        var ov = selectObj.options[ind].innerHTML;
+        var frVal = document.querySelector("#currentValue-fr").innerHTML;
+        var arr = [];
+        var index = s.indexOf(ov)+1;
+        for (j = 0; j < frVal; j++) {
+            if (index >= s.length) {
+                index = 0;
+            }
+            arr.push(s[index]);
+            index++;
+        }
+        console.log(arr);
     }
 
     var s = readSounds();
