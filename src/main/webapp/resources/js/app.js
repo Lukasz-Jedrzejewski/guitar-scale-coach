@@ -21,12 +21,21 @@ document.addEventListener("DOMContentLoaded", function() {
         }
         p.style.display = "none";
 
-        /**
-        need to work on displaying, duplicating elements when changing input data.
-        */
-
-        createFretboard();
-        createTuningFields();
+        try {
+            var strVal = document.querySelector("#currentValue-str").innerHTML;
+            var frVal = document.querySelector("#currentValue-fr").innerHTML;
+            var tab = document.querySelector("tbody");
+            if (strVal && frVal && tab) {
+                tab.remove();
+                createFretboard();
+                createTuningFields();
+            } else {
+                createFretboard();
+                createTuningFields();
+            }
+        } catch {
+            console.log('At least one value is null')
+        }
     }
 
     function createFretboard() {
