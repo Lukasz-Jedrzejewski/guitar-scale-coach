@@ -36,16 +36,13 @@
                     </form:select>
                 </div>
                 <div class="form-field" id="tune">
+                    <table class="table--">
                     <form:select path="tuning" multiple="false" id="t-s" onchange="fillIn(this)" style="display: none;">
                         <option disabled selected value> -- select the sound -- </option>
                         <c:forEach var="sound" items="${sounds}">
                             <option name="${tuning.value}" value="${sound}">${sound.toString()}</option>
                         </c:forEach>
                     </form:select>
-                </div>
-                <div class="div-table">
-                    <table class="table--">
-
                     </table>
                 </div>
                 <input type="submit" value="apply"/>

@@ -93,3 +93,22 @@ footer p {
     background-color: black;
     border-radius: 50%;
 }
+
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+
+td {
+    background-color: #660000;
+    color: white;
+    width: 60px;
+    height: 30px;
+    border-right: 3px solid silver;
+    text-align: center;
+}
+
+.dot {
+    background-color: white;
+    margin: auto;
+}
