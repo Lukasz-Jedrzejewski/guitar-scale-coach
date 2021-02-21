@@ -8,10 +8,6 @@ document.addEventListener("DOMContentLoaded", function() {
         var val = selectObj.options[index].innerHTML;
         var p = document.createElement("p");
         p.id = "currentValue-"+selectObj.id;
-        /*
-        id for strings - currentValue-str
-        id for frets - currentValue-fr
-        */
         p.innerHTML = val;
         var cur = document.getElementById(p.id);
         if(!cur) {
@@ -76,9 +72,6 @@ document.addEventListener("DOMContentLoaded", function() {
             var td = document.createElement("td");
             var td1 = document.createElement("td");
             dot.className = "dot";
-            /*
-            need to work with dot sizes
-            */
             dot.style.width = i*3;
             dot.style.height = i*3;
             var clone = ts.cloneNode(true);
