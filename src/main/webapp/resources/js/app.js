@@ -114,10 +114,22 @@ document.addEventListener("DOMContentLoaded", function() {
         return sounds;
     }
 
+    var tuning = [];
+    var scalePart = document.getElementById('scale');
+    scalePart.style.display = 'none';
+    function scaleDefinitionVisibility (strVal) {
+        var scalePart = document.getElementById('scale');
+        if (strVal == tuning.length) {
+            scalePart.style.display = 'block';
+        }
+    }
+
     function fillIn(selectObj) {
         var selectedIndex = selectObj.selectedIndex;
         var selectedValue = selectObj.options[selectedIndex].innerHTML;
+        tuning.push(selectedValue);
         var frVal = document.querySelector("#currentValue-fr").innerHTML;
+        var strVal = document.querySelector("#currentValue-str").innerHTML;
         var tblBody = document.querySelector("tbody");
         var currentSelect = selectObj.id;
         var index = soundsTable.indexOf(selectedValue)+1;
@@ -138,6 +150,7 @@ document.addEventListener("DOMContentLoaded", function() {
             cell.appendChild(cellText);
             selectObj.parentElement.parentElement.appendChild(cell);
             }
+            scaleDefinitionVisibility(strVal);
         }
 
     var soundsTable = readSounds();

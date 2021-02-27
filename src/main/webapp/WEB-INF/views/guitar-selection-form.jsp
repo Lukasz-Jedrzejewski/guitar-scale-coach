@@ -45,7 +45,7 @@
                     </form:select>
                     </table>
                 </div>
-                <div class="form-field">
+                <div class="form-field" id="scale">
                     <label>Define the scale</label>
                         <c:forEach items="${sounds}" var="sound" varStatus="status">
                             <form:checkbox path="scale" value="${sound}" />${sound.toString()}
