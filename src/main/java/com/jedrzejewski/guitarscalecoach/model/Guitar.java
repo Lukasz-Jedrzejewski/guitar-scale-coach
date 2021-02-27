@@ -4,12 +4,18 @@ import com.jedrzejewski.guitarscalecoach.enumerated.NumberOfFrets;
 import com.jedrzejewski.guitarscalecoach.enumerated.NumberOfStrings;
 import com.jedrzejewski.guitarscalecoach.enumerated.Sounds;
 
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 import java.util.List;
 
 public class Guitar {
 
+    @NotNull
     private NumberOfStrings numberOfStrings;
+    @NotNull
     private NumberOfFrets numberOfFrets;
+    @NotNull
+    @Size(min = 4, max = 12)
     private List<Sounds> tuning;
     private List<Sounds> scale;
 

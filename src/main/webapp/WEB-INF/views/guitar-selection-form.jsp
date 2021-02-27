@@ -25,6 +25,7 @@
                             <option value="${strings}">${strings.toString()}</option>
                         </c:forEach>
                     </form:select>
+                    <form:errors path="numberOfStrings"/>
                 </div>
                 <div class="form-field">
                     <label>Choose number of frets</label>
@@ -34,6 +35,7 @@
                             <option value="${frets}">${frets.toString()}</option>
                         </c:forEach>
                     </form:select>
+                    <form:errors path="numberOfFrets"/>
                 </div>
                 <div class="form-field" id="tune">
                     <table class="table--">
@@ -43,6 +45,7 @@
                             <option name="${tuning.value}" value="${sound}">${sound.toString()}</option>
                         </c:forEach>
                     </form:select>
+                    <form:errors path="tuning"/>
                     </table>
                 </div>
                 <div class="form-field" id="scale">
