@@ -50,6 +50,7 @@ public class ScalePracticeController {
         System.out.println(guitar.getNumberOfStrings().toString());
         System.out.println(guitar.getNumberOfFrets().toString());
         System.out.println(guitar.getTuning().toString());
+        System.out.println(guitar.getScale().toString());
         Map<Integer, Sounds> tuning = guitarModelService.createTuning(guitar.getTuning());
         tuning.forEach((key, value) -> System.out.println(key + " " + value));
         return "redirect:/";
