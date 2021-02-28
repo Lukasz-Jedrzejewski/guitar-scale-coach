@@ -54,7 +54,10 @@
                             <form:checkbox path="scale" value="${sound}" />${sound.toString()}
                         </c:forEach>
                 </div>
-                <input type="submit" value="apply" onmouseenter="test(this)"/>
+                <div class="form-field">
+                    <input type="submit" value="apply" onmouseenter="test(this)" onmouseleave="hide(this)"/>
+                    <span id="valid-guitar" style="display: none">At least one value is not defined</span>
+                </div>
             </form:form>
         </div>
     </section>

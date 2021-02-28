@@ -3,6 +3,7 @@ document.addEventListener("DOMContentLoaded", function() {
     window.changeSelected = changeSelected;
     window.fillIn = fillIn;
     window.test = test;
+    window.hide = hide;
 
     function changeSelected(selectObj) {
         tuning = [];
@@ -170,11 +171,17 @@ document.addEventListener("DOMContentLoaded", function() {
     }
 
     function test(button) {
+        var message = document.getElementById('valid-guitar');
         var res = validate();
         if (!res) {
-            alert('At least one value is not defined');
+            message.style.display = "inline";
         }
         return true;
+    }
+
+    function hide(button) {
+        var message = document.getElementById('valid-guitar');
+        message.style.display = "none";
     }
 
     var soundsTable = readSounds();
