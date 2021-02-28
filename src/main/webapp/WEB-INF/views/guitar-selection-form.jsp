@@ -54,7 +54,7 @@
                             <form:checkbox path="scale" value="${sound}" />${sound.toString()}
                         </c:forEach>
                 </div>
-                <input type="submit" value="apply"/>
+                <input type="submit" value="apply" onmouseenter="test(this)"/>
             </form:form>
         </div>
     </section>

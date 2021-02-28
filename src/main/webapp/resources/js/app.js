@@ -2,8 +2,10 @@ document.addEventListener("DOMContentLoaded", function() {
 
     window.changeSelected = changeSelected;
     window.fillIn = fillIn;
+    window.test = test;
 
     function changeSelected(selectObj) {
+        tuning = [];
         var index = selectObj.selectedIndex;
         var val = selectObj.options[index].innerHTML;
         var p = document.createElement("p");
@@ -128,6 +130,7 @@ document.addEventListener("DOMContentLoaded", function() {
         var selectedIndex = selectObj.selectedIndex;
         var selectedValue = selectObj.options[selectedIndex].innerHTML;
         tuning.push(selectedValue);
+        console.log(tuning);
         var frVal = document.querySelector("#currentValue-fr").innerHTML;
         var strVal = document.querySelector("#currentValue-str").innerHTML;
         var tblBody = document.querySelector("tbody");
@@ -152,6 +155,27 @@ document.addEventListener("DOMContentLoaded", function() {
             }
             scaleDefinitionVisibility(strVal);
         }
+
+    function validate() {
+        try {
+            var strVal = document.querySelector("#currentValue-str").innerHTML;
+            var frVal = document.querySelector("#currentValue-fr").innerHTML;
+            if ( strVal == tuning.length && strVal != 'undefined' && frVal != 'undefined') {
+                return true;
+            }
+            return false;
+        } catch {
+            console.log('At least one value is null');
+        }
+    }
+
+    function test(button) {
+        var res = validate();
+        if (!res) {
+            alert('At least one value is not defined');
+        }
+        return true;
+    }
 
     var soundsTable = readSounds();
 
