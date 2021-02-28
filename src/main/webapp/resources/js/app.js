@@ -6,7 +6,6 @@ document.addEventListener("DOMContentLoaded", function() {
     window.hide = hide;
 
     function changeSelected(selectObj) {
-        tuning = [];
         var index = selectObj.selectedIndex;
         var val = selectObj.options[index].innerHTML;
         var p = document.createElement("p");
@@ -117,12 +116,13 @@ document.addEventListener("DOMContentLoaded", function() {
         return sounds;
     }
 
-    var tuning = [];
     var scalePart = document.getElementById('scale');
     scalePart.style.display = 'none';
-    function scaleDefinitionVisibility (strVal) {
+
+    function scaleDefinitionVisibility () {
         var scalePart = document.getElementById('scale');
-        if (strVal == tuning.length) {
+        var stringsDefinitions = checkStringsDefinition();
+        if (stringsDefinitions) {
             scalePart.style.display = 'block';
         }
     }
@@ -130,8 +130,6 @@ document.addEventListener("DOMContentLoaded", function() {
     function fillIn(selectObj) {
         var selectedIndex = selectObj.selectedIndex;
         var selectedValue = selectObj.options[selectedIndex].innerHTML;
-        tuning.push(selectedValue);
-        console.log(tuning);
         var frVal = document.querySelector("#currentValue-fr").innerHTML;
         var strVal = document.querySelector("#currentValue-str").innerHTML;
         var tblBody = document.querySelector("tbody");
@@ -154,14 +152,28 @@ document.addEventListener("DOMContentLoaded", function() {
             cell.appendChild(cellText);
             selectObj.parentElement.parentElement.appendChild(cell);
             }
-            scaleDefinitionVisibility(strVal);
+            scaleDefinitionVisibility();
         }
+
+    function checkStringsDefinition () {
+        var select = document.querySelectorAll('.t-select');
+        var counter = 0;
+        for (i = 0; i <select.length; i++) {
+            var ind = select[i].selectedIndex;
+            var val = select[i].options[ind].innerHTML;
+            if (val != ' -- select the sound -- ') {
+                counter++;
+            }
+        }
+        return counter == select.length;
+    }
 
     function validate() {
         try {
             var strVal = document.querySelector("#currentValue-str").innerHTML;
             var frVal = document.querySelector("#currentValue-fr").innerHTML;
-            if ( strVal == tuning.length && strVal != 'undefined' && frVal != 'undefined') {
+            var definitions = checkStringsDefinition();
+            if (definitions && strVal != 'undefined' && frVal != 'undefined') {
                 return true;
             }
             return false;
