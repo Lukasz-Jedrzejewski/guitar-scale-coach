@@ -9,15 +9,14 @@ import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
+import java.net.http.HttpRequest;
 import java.util.Arrays;
 import java.util.List;
-import java.util.Map;
 
 @Controller
 @RequestMapping("/practice")
@@ -47,18 +46,29 @@ public class ScalePracticeController {
         return "guitar-selection-form";
     }
 
-    @PostMapping("/guitar-selection")
-    public String readGuitarAction(@Valid @ModelAttribute Guitar guitar, BindingResult bindingResult) {
-        if (bindingResult.hasErrors()) {
-            return "guitar-selection-form";
-        } else {
-            System.out.println(guitar.getNumberOfStrings().toString());
-            System.out.println(guitar.getNumberOfFrets().toString());
-            System.out.println(guitar.getTuning().toString());
-            System.out.println(guitar.getScale().toString());
-            Map<Integer, Sounds> tuning = guitarModelService.createTuning(guitar.getTuning());
-            tuning.forEach((key, value) -> System.out.println(key + " " + value));
+    @RequestMapping(value = "/guitar-selection-result", method = {RequestMethod.GET, RequestMethod.POST})
+    public String readGuitarAction(@Valid @ModelAttribute Guitar guitar, BindingResult bindingResult,
+                                   HttpSession session, Model model, HttpServletRequest request) {
+        String referer = null;
+        try {
+            referer = request.getHeader("Referer");
+            System.out.println(referer);
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
         }
-        return "redirect:/";
+        if (referer == null) {
+            try {
+                model.addAttribute("guitar", session.getAttribute("currentGuitar"));
+            } catch (Exception e) {
+                System.out.println(e.getMessage());
+            }
+        } else {
+            if (bindingResult.hasErrors()) {
+                return "guitar-selection-form";
+            } else {
+                session.setAttribute("currentGuitar", guitar);
+            }
+        }
+        return "scale-practice";
     }
 }

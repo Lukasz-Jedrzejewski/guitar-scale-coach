@@ -16,7 +16,7 @@
     <%@include file="navigation-bar.jsp"%>
     <section>
         <div id="selection">
-            <form:form method="post" action="/practice/guitar-selection" modelAttribute="guitar">
+            <form:form method="post" action="/practice/guitar-selection-result" modelAttribute="guitar">
                 <div class="form-field">
                     <label>Choose number of strings</label>
                     <form:select id="str" onchange="changeSelected(this);" path="numberOfStrings" multiple="false">
