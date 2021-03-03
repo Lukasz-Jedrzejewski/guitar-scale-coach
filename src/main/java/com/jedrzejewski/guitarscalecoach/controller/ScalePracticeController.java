@@ -52,13 +52,14 @@ public class ScalePracticeController {
         String referer = null;
         try {
             referer = request.getHeader("Referer");
-            System.out.println(referer);
         } catch (Exception e) {
             System.out.println(e.getMessage());
         }
         if (referer == null) {
             try {
-                model.addAttribute("guitar", session.getAttribute("currentGuitar"));
+                Guitar currentGuitar = (Guitar) session.getAttribute("currentGuitar");
+                List<Sounds> tuning = currentGuitar.getTuning();
+                model.addAttribute("tuning", tuning);
             } catch (Exception e) {
                 System.out.println(e.getMessage());
             }
@@ -67,6 +68,9 @@ public class ScalePracticeController {
                 return "guitar-selection-form";
             } else {
                 session.setAttribute("currentGuitar", guitar);
+                List<Sounds> tuning = guitar.getTuning();
+                System.out.println(tuning);
+                model.addAttribute("tuning", tuning);
             }
         }
         return "scale-practice";

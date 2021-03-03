@@ -16,7 +16,20 @@
     <section>
         <article>
             <h1>Your fretboard looks like this</h1>
-            ${guitar}
+                <table>
+                    <tbody>
+                        <c:forEach items="${tuning}" var="sound">
+                            <tr>
+                                <td>
+                                    ${sound.toString()}
+                                </td>
+                                <td>
+                                    <div class="dot" style="width: 3px; height: 3px;"></div>
+                                </td>
+                            </tr>
+                        </c:forEach>
+                    </tbody>
+                </table>
         </article>
     </section>
     <%@include file="footer.jsp"%>
