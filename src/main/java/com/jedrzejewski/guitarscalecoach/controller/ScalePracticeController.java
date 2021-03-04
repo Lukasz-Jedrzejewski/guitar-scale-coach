@@ -71,6 +71,8 @@ public class ScalePracticeController {
                 List<Sounds> tuning = guitar.getTuning();
                 System.out.println(tuning);
                 model.addAttribute("tuning", tuning);
+                System.out.println(guitarModelService.fill(tuning.get(0), guitar.getNumberOfFrets()));
+
             }
         }
         return "scale-practice";
