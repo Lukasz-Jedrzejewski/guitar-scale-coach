@@ -1,6 +1,5 @@
 package com.jedrzejewski.guitarscalecoach.service.serviceImpl;
 
-import com.jedrzejewski.guitarscalecoach.enumerated.NumberOfFrets;
 import com.jedrzejewski.guitarscalecoach.enumerated.Sounds;
 import com.jedrzejewski.guitarscalecoach.service.GuitarModelService;
 import org.springframework.stereotype.Service;
@@ -18,21 +17,4 @@ public class GuitarModelServiceImpl implements GuitarModelService {
         }
         return tuning;
     }
-
-    @Override
-    public List<Sounds> fill(Sounds sound, NumberOfFrets numberOfFrets) {
-        List<Sounds> sounds = new ArrayList<Sounds>(EnumSet.allOf(Sounds.class));
-        List<Sounds> resultList = new ArrayList<>();
-        int frets = Integer.parseInt(numberOfFrets.toString());
-        int index = sounds.indexOf(sound)+1;
-        for (int i = 0; i < frets; i++) {
-            if (index >= sounds.size()) {
-                index = 0;
-            }
-            resultList.add(sounds.get(index));
-            index++;
-        }
-        return resultList;
-    }
-
 }

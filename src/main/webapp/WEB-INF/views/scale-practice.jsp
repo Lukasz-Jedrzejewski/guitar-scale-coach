@@ -18,14 +18,23 @@
             <h1>Your fretboard looks like this</h1>
                 <table>
                     <tbody>
-                        <c:forEach items="${tuning}" var="sound">
+                        <c:forEach items="${tuning}" var="sound" varStatus="iteration">
                             <tr>
                                 <td>
                                     ${sound.toString()}
                                 </td>
                                 <td>
-                                    <div class="dot" style="width: 3px; height: 3px;"></div>
+                                    <div class="dot" style="width: calc(3px*(${iteration.index+1})); height: calc(3px*(${iteration.index+1}));"></div>
                                 </td>
+                                    <jsp:useBean id="guitar" class="com.jedrzejewski.guitarscalecoach.model.Guitar"/>
+                                    <c:set var="s" value="${sound}"/>
+                                    <c:set var="f" value="${frets}"/>
+                                    <c:set var="list" value="${guitar.fill(s, f)}"/>
+                                    <c:forEach items="${list}" var="cs">
+                                <td>
+                                    ${cs.toString()}
+                                </td>
+                                    </c:forEach>
                             </tr>
                         </c:forEach>
                     </tbody>
