@@ -73,7 +73,6 @@ public class ScalePracticeController {
                 System.out.println(tuning);
                 model.addAttribute("tuning", tuning);
                 model.addAttribute("frets", guitar.getNumberOfFrets());
-
             }
         }
         return "scale-practice";

@@ -18,6 +18,13 @@
             <h1>Your fretboard looks like this</h1>
                 <table>
                     <tbody>
+                        <tr>
+                            <td>your tuning</td>
+                            <td>string</td>
+                            <c:forEach var = "i" begin = "1" end = "${frets.toString()}">
+                                <td>${i}</td>
+                            </c:forEach>
+                        </tr>
                         <c:forEach items="${tuning}" var="sound" varStatus="iteration">
                             <tr>
                                 <td>
