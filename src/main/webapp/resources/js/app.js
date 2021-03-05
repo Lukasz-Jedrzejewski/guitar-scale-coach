@@ -47,7 +47,9 @@ document.addEventListener("DOMContentLoaded", function() {
     var tr = document.createElement("tr");
     tr.id = 0;
     var td = document.createElement("td");
+    td.className = "fretboard-head";
     var td1 = document.createElement("td");
+    td1.className = "fretboard-head";
     var cellTextChoose = document.createTextNode("choose your tuning");
     var cellTextString = document.createTextNode("String");
     td.style.border = "none";
@@ -58,6 +60,7 @@ document.addEventListener("DOMContentLoaded", function() {
     tr.appendChild(td1);
     for (col = 1; col < parseInt(frVal)+1; col++) {
         var cell = document.createElement("td");
+        cell.className = "fretboard-head";
         var cellText = document.createTextNode(col);
         cell.appendChild(cellText);
         tr.appendChild(cell);

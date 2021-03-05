@@ -19,10 +19,10 @@
                 <table>
                     <tbody>
                         <tr>
-                            <td>your tuning</td>
-                            <td>string</td>
+                            <td class="fretboard-head">your tuning</td>
+                            <td class="fretboard-head">string</td>
                             <c:forEach var = "i" begin = "1" end = "${frets.toString()}">
-                                <td>${i}</td>
+                                <td class="fretboard-head">${i}</td>
                             </c:forEach>
                         </tr>
                         <c:forEach items="${tuning}" var="sound" varStatus="iteration">
