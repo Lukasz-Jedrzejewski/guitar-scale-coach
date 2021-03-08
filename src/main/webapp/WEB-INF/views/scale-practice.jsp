@@ -19,7 +19,7 @@
                 <table>
                     <tbody>
                         <tr>
-                            <td class="fretboard-head">your tuning</td>
+                            <td class="fretboard-head">tuning</td>
                             <td class="fretboard-head">string</td>
                             <c:forEach var = "i" begin = "1" end = "${guitar.numberOfFrets.toString()}">
                                 <td class="fretboard-head">${i}</td>
@@ -52,6 +52,28 @@
                                     </c:forEach>
                             </tr>
                         </c:forEach>
+                        <tr>
+                            <td class="fretboard-head"></td>
+                            <td class="fretboard-head"></td>
+                            <c:forEach var = "i" begin = "1" end = "${guitar.numberOfFrets.toString()}">
+                                <c:choose>
+                                <c:when test="${i == 3 || i == 5 || i == 7 || i == 9 || i == 15 || i == 17 || i == 19 || i == 21}">
+                                    <td class="fretboard-head">
+                                        <div class="dot" style="width: 7px; height: 7px;"></div>
+                                    </td>
+                                </c:when>
+                                <c:when test="${i == 12 || i == 24}">
+                                    <td class="fretboard-head" >
+                                        <div class="dot" style="width: 7px; height: 7px; display: inline-block;"></div>
+                                        <div class="dot" style="width: 7px; height: 7px; display: inline-block;"></div>
+                                    </td>
+                                </c:when>
+                                <c:otherwise>
+                                    <td class="fretboard-head"></td>
+                                </c:otherwise>
+                                </c:choose>
+                            </c:forEach>
+                        </tr>
                     </tbody>
                 </table>
         </article>

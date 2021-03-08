@@ -90,8 +90,9 @@ footer p {
 }
 
 .dot {
-    background-color: black;
+    background-color: white;
     border-radius: 50%;
+    margin: auto;
 }
 
 table {
@@ -113,11 +114,9 @@ td {
     font-weight: bold;
 }
 
-.dot {
-    background-color: white;
-    margin: auto;
-}
-
 .fretboard-head {
     background-color: #CD853F;
+    border: none;
+    height: 10px;
+    font-size: 7px;
 }
