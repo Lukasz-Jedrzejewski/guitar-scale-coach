@@ -16,7 +16,7 @@
     <%@include file="navigation-bar.jsp"%>
     <section>
         <div id="selection">
-            <form:form method="post" action="/practice/guitar-selection" modelAttribute="guitar">
+            <form:form method="post" action="/practice/guitar-selection-result" modelAttribute="guitar">
                 <div class="form-field">
                     <label>Choose number of strings</label>
                     <form:select id="str" onchange="changeSelected(this);" path="numberOfStrings" multiple="false">
@@ -25,6 +25,7 @@
                             <option value="${strings}">${strings.toString()}</option>
                         </c:forEach>
                     </form:select>
+                    <form:errors path="numberOfStrings"/>
                 </div>
                 <div class="form-field">
                     <label>Choose number of frets</label>
@@ -34,6 +35,7 @@
                             <option value="${frets}">${frets.toString()}</option>
                         </c:forEach>
                     </form:select>
+                    <form:errors path="numberOfFrets"/>
                 </div>
                 <div class="form-field" id="tune">
                     <table class="table--">
@@ -43,9 +45,19 @@
                             <option name="${tuning.value}" value="${sound}">${sound.toString()}</option>
                         </c:forEach>
                     </form:select>
+                    <form:errors path="tuning"/>
                     </table>
                 </div>
-                <input type="submit" value="apply"/>
+                <div class="form-field" id="scale">
+                    <label>Define the scale</label>
+                        <c:forEach items="${sounds}" var="sound" varStatus="status">
+                            <form:checkbox path="scale" value="${sound}" />${sound.toString()}
+                        </c:forEach>
+                </div>
+                <div class="form-field">
+                    <input type="submit" value="apply" onmouseenter="test(this)" onmouseleave="hide(this)"/>
+                    <span id="valid-guitar" style="display: none">At least one value is not defined</span>
+                </div>
             </form:form>
         </div>
     </section>
