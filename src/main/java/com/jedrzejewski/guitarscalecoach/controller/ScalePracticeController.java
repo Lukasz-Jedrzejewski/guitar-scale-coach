@@ -53,27 +53,21 @@ public class ScalePracticeController {
         try {
             referer = request.getHeader("Referer");
         } catch (Exception e) {
-            System.out.println(e.getMessage());
+            System.out.println("Referer = " + e.getMessage());
         }
         if (referer == null) {
             try {
                 Guitar currentGuitar = (Guitar) session.getAttribute("currentGuitar");
-                List<Sounds> tuning = currentGuitar.getTuning();
-                model.addAttribute("tuning", tuning);
-                model.addAttribute("frets", guitar.getNumberOfFrets());
-                model.addAttribute("scale", guitar.getScale());
+                model.addAttribute("guitar", currentGuitar);
             } catch (Exception e) {
-                System.out.println(e.getMessage());
+                System.out.println("Session attribute = " + e.getMessage());
             }
         } else {
             if (bindingResult.hasErrors()) {
                 return "guitar-selection-form";
             } else {
                 session.setAttribute("currentGuitar", guitar);
-                List<Sounds> tuning = guitar.getTuning();
-                model.addAttribute("tuning", tuning);
-                model.addAttribute("frets", guitar.getNumberOfFrets());
-                model.addAttribute("scale", guitar.getScale());
+                model.addAttribute("guitar", guitar);
             }
         }
         return "scale-practice";

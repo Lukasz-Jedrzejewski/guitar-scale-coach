@@ -21,11 +21,11 @@
                         <tr>
                             <td class="fretboard-head">your tuning</td>
                             <td class="fretboard-head">string</td>
-                            <c:forEach var = "i" begin = "1" end = "${frets.toString()}">
+                            <c:forEach var = "i" begin = "1" end = "${guitar.numberOfFrets.toString()}">
                                 <td class="fretboard-head">${i}</td>
                             </c:forEach>
                         </tr>
-                        <c:forEach items="${tuning}" var="sound" varStatus="iteration">
+                        <c:forEach items="${guitar.tuning}" var="sound" varStatus="iteration">
                             <tr>
                                 <td>
                                     ${sound.toString()}
@@ -33,18 +33,18 @@
                                 <td>
                                     <div class="dot" style="width: calc(3px*(${iteration.index+1})); height: calc(3px*(${iteration.index+1}));"></div>
                                 </td>
-                                    <jsp:useBean id="guitar" class="com.jedrzejewski.guitarscalecoach.model.Guitar"/>
+                                    <jsp:useBean id="currentGuitar" class="com.jedrzejewski.guitarscalecoach.model.Guitar"/>
                                     <c:set var="s" value="${sound}"/>
-                                    <c:set var="f" value="${frets}"/>
-                                    <c:set var="scale" value="${scale}"/>
+                                    <c:set var="f" value="${guitar.numberOfFrets}"/>
+                                    <c:set var="scale" value="${guitar.scale}"/>
                                     <c:set var="list" value="${guitar.fill(s, f)}"/>
                                     <c:forEach items="${list}" var="cs">
-                                        <c:if test="${guitar.checkScale(scale, cs) == false}">
+                                        <c:if test="${currentGuitar.checkScale(scale, cs) == false}">
                                             <td>
                                                 ${cs.toString()}
                                             </td>
                                         </c:if>
-                                        <c:if test="${guitar.checkScale(scale, cs) == true}">
+                                        <c:if test="${currentGuitar.checkScale(scale, cs) == true}">
                                             <td class="searched">
                                                 ${cs.toString()}
                                             </td>
