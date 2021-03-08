@@ -61,6 +61,7 @@ public class ScalePracticeController {
                 List<Sounds> tuning = currentGuitar.getTuning();
                 model.addAttribute("tuning", tuning);
                 model.addAttribute("frets", guitar.getNumberOfFrets());
+                model.addAttribute("scale", guitar.getScale());
             } catch (Exception e) {
                 System.out.println(e.getMessage());
             }
@@ -70,9 +71,9 @@ public class ScalePracticeController {
             } else {
                 session.setAttribute("currentGuitar", guitar);
                 List<Sounds> tuning = guitar.getTuning();
-                System.out.println(tuning);
                 model.addAttribute("tuning", tuning);
                 model.addAttribute("frets", guitar.getNumberOfFrets());
+                model.addAttribute("scale", guitar.getScale());
             }
         }
         return "scale-practice";

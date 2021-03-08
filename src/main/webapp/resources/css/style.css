@@ -100,12 +100,17 @@ table {
 }
 
 td {
-    background-color: #660000;
+    background-color: #4d0000;
     color: white;
     width: 60px;
     height: 30px;
     border-right: 3px solid silver;
     text-align: center;
+}
+
+.searched {
+    background-color: green;
+    font-weight: bold;
 }
 
 .dot {

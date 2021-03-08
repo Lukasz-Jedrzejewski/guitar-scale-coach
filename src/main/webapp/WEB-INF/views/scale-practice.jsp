@@ -36,11 +36,19 @@
                                     <jsp:useBean id="guitar" class="com.jedrzejewski.guitarscalecoach.model.Guitar"/>
                                     <c:set var="s" value="${sound}"/>
                                     <c:set var="f" value="${frets}"/>
+                                    <c:set var="scale" value="${scale}"/>
                                     <c:set var="list" value="${guitar.fill(s, f)}"/>
                                     <c:forEach items="${list}" var="cs">
-                                <td>
-                                    ${cs.toString()}
-                                </td>
+                                        <c:if test="${guitar.checkScale(scale, cs) == false}">
+                                            <td>
+                                                ${cs.toString()}
+                                            </td>
+                                        </c:if>
+                                        <c:if test="${guitar.checkScale(scale, cs) == true}">
+                                            <td class="searched">
+                                                ${cs.toString()}
+                                            </td>
+                                        </c:if>
                                     </c:forEach>
                             </tr>
                         </c:forEach>

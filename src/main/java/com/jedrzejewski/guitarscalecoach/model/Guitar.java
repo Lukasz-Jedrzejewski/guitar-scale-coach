@@ -36,6 +36,10 @@ public class Guitar {
         return resultList;
     }
 
+    public boolean checkScale(List<Sounds> sounds, Sounds singleSound) {
+        return sounds.contains(singleSound);
+    }
+
     public NumberOfStrings getNumberOfStrings() {
         return numberOfStrings;
     }
