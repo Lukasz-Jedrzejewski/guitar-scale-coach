@@ -17,5 +17,4 @@ public class GuitarModelServiceImpl implements GuitarModelService {
         }
         return tuning;
     }
-
 }

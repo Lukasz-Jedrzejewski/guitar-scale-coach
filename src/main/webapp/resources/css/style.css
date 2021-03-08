@@ -90,8 +90,9 @@ footer p {
 }
 
 .dot {
-    background-color: black;
+    background-color: white;
     border-radius: 50%;
+    margin: auto;
 }
 
 table {
@@ -100,7 +101,7 @@ table {
 }
 
 td {
-    background-color: #660000;
+    background-color: #4d0000;
     color: white;
     width: 60px;
     height: 30px;
@@ -108,7 +109,14 @@ td {
     text-align: center;
 }
 
-.dot {
-    background-color: white;
-    margin: auto;
+.searched {
+    background-color: green;
+    font-weight: bold;
+}
+
+.fretboard-head {
+    background-color: #CD853F;
+    border: none;
+    height: 10px;
+    font-size: 7px;
 }
