@@ -10,14 +10,14 @@
     <meta charset="UTF-8">
     <title>Index</title>
 </head>
-<body>
+<body onload="executeSpider()">
     <%@include file="header.jsp"%>
     <%@include file="navigation-bar.jsp"%>
     <section>
         <article>
             <h1>Here are some general exercises. You should practice everyday!</h1>
             <h3>Spider</h3>
-                <table>
+                <table id="spider-tab">
                     <tbody>
                         <tr>
                             <td class="fretboard-head">tuning</td>
@@ -68,5 +68,7 @@
         </article>
     </section>
     <%@include file="footer.jsp"%>
+
+    <script type="text/javascript" src="<c:url value="/resources/js/app.js"/>"></script>
 </body>
 </html>

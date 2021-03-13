@@ -4,6 +4,7 @@ document.addEventListener("DOMContentLoaded", function() {
     window.fillIn = fillIn;
     window.test = test;
     window.hide = hide;
+    window.executeSpider = executeSpider;
 
     function changeSelected(selectObj) {
         var index = selectObj.selectedIndex;
@@ -108,19 +109,28 @@ document.addEventListener("DOMContentLoaded", function() {
     }
 
     function readSounds() {
-        var opts = document.querySelector("#t-s").options;
-        var sounds = [];
-        for (i = 0; i < opts.length; i++) {
-            var item = opts[i].innerHTML;
-            if (item.length <= 2) {
-                sounds.push(item);
-            }
+        try {
+            var opts = document.querySelector("#t-s").options;
+            var sounds = [];
+                for (i = 0; i < opts.length; i++) {
+                    var item = opts[i].innerHTML;
+                    if (item.length <= 2) {
+                        sounds.push(item);
+                    }
+                }
+            return sounds;
+        } catch {
+            console.log("Element not exist.");
         }
-        return sounds;
+
     }
 
-    var scalePart = document.getElementById('scale');
-    scalePart.style.display = 'none';
+    try {
+        var scalePart = document.getElementById('scale');
+        scalePart.style.display = 'none';
+    } catch {
+        console.log("Element not exist.")
+    }
 
     function scaleDefinitionVisibility () {
         var scalePart = document.getElementById('scale');
@@ -200,5 +210,20 @@ document.addEventListener("DOMContentLoaded", function() {
     }
 
     var soundsTable = readSounds();
+
+    function executeSpider() {
+        var current;
+        var tab = document.getElementById('spider-tab');
+        var rows = tab.rows;
+        for (let i = 1; i < rows.length-1; i++) {
+            var cols = tab.rows[i].cells;
+            for (let j = 2; j < cols.length; j++) {
+                var current = tab.rows[i].cells[j];
+                setInterval(() => {
+                    current.style.background = "green";
+                }, 1000);
+            }
+        }
+    }
 
 });
