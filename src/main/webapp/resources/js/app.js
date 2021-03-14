@@ -211,19 +211,69 @@ document.addEventListener("DOMContentLoaded", function() {
 
     var soundsTable = readSounds();
 
+    var i = 1;
+    var j = 2;
+    var k = 0;
+    var l = 2;
+    var direction = true;
+    var id;
+
     function executeSpider() {
-        var current;
+        id = setInterval(change, 20);
+    }
+
+    function change() {
         var tab = document.getElementById('spider-tab');
         var rows = tab.rows;
-        for (let i = 1; i < rows.length-1; i++) {
-            var cols = tab.rows[i].cells;
-            for (let j = 2; j < cols.length; j++) {
-                var current = tab.rows[i].cells[j];
-                setInterval(() => {
-                    current.style.background = "green";
-                }, 1000);
+        var cols = tab.rows[i].cells;
+        var current = tab.rows[i].cells[j];
+        if (direction) {
+        current.classList.add('highlight');
+        setTimeout(() => {
+            current.classList.remove('highlight');
+        }, 100)
+        j++;
+        k++;
+        if (k == 4) {
+            i++;
+            j = l;
+            k = 0;
+            }
+        if (i == rows.length-1) {
+            l += 1;
+            k = 0;
+            j = l;
+            i--;
+            direction = false;
+            }
+        } else {
+        current.classList.add('highlight');
+        setTimeout(() => {
+            current.classList.remove('highlight');
+        }, 100)
+        k++;
+        j++;
+        if (k == 4) {
+            i--;
+            j = l;
+            k = 0;
+            }
+        if (i == 0) {
+            l += 1;
+            k = 0;
+            j = l;
+            i++;
+            direction = true;
             }
         }
-    }
+        if (l == 23) {
+            clearInterval(id);
+            i = 1;
+            j = 2;
+            k = 0;
+            l = 2;
+            direction = true;
+            }
+        }
 
 });

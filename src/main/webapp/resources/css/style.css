@@ -120,3 +120,7 @@ td {
     height: 10px;
     font-size: 7px;
 }
+
+.highlight {
+    background-color: green;
+}

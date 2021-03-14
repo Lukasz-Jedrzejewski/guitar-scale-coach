@@ -10,13 +10,14 @@
     <meta charset="UTF-8">
     <title>Index</title>
 </head>
-<body onload="executeSpider()">
+<body>
     <%@include file="header.jsp"%>
     <%@include file="navigation-bar.jsp"%>
     <section>
         <article>
             <h1>Here are some general exercises. You should practice everyday!</h1>
             <h3>Spider</h3>
+                <button class="start-btn" onclick="executeSpider()">start</button>
                 <table id="spider-tab">
                     <tbody>
                         <tr>
