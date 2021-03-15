@@ -232,6 +232,7 @@ document.addEventListener("DOMContentLoaded", function() {
     function executeSpider() {
         var tempo = document.getElementById('tempo').value;
         resetVariables();
+        stopInterval();
         id = setInterval(change, 60000/tempo);
     }
 
