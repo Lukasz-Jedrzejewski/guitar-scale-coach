@@ -5,6 +5,7 @@ document.addEventListener("DOMContentLoaded", function() {
     window.test = test;
     window.hide = hide;
     window.executeSpider = executeSpider;
+    window.validateTempo = validateTempo;
 
     function changeSelected(selectObj) {
         var index = selectObj.selectedIndex;
@@ -216,10 +217,22 @@ document.addEventListener("DOMContentLoaded", function() {
     var k = 0;
     var l = 2;
     var direction = true;
-    var id;
+    var id = 0;
+
+    function validateTempo() {
+        var tempo = document.getElementById('tempo').value;
+        var tempoBtn = document.getElementById('tempo-btn');
+        if(tempo < 60 || tempo > 240) {
+            tempoBtn.style.display = "none";
+        } else {
+            tempoBtn.style.display = "inline";
+        }
+    }
 
     function executeSpider() {
-        id = setInterval(change, 20);
+        var tempo = document.getElementById('tempo').value;
+        resetVariables();
+        id = setInterval(change, 60000/tempo);
     }
 
     function change() {
@@ -267,13 +280,21 @@ document.addEventListener("DOMContentLoaded", function() {
             }
         }
         if (l == 23) {
+            stopInterval();
+            resetVariables();
+            }
+        }
+
+        function stopInterval() {
             clearInterval(id);
+        }
+
+        function resetVariables() {
             i = 1;
             j = 2;
             k = 0;
             l = 2;
             direction = true;
-            }
         }
 
 });
