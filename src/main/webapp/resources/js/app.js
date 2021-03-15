@@ -6,6 +6,7 @@ document.addEventListener("DOMContentLoaded", function() {
     window.hide = hide;
     window.executeSpider = executeSpider;
     window.validateTempo = validateTempo;
+    window.checkMeter = checkMeter;
 
     function changeSelected(selectObj) {
         var index = selectObj.selectedIndex;
@@ -229,11 +230,17 @@ document.addEventListener("DOMContentLoaded", function() {
         }
     }
 
+    function checkMeter() {
+        var meter = document.getElementById('meter').value;
+        return meter;
+    }
+
     function executeSpider() {
         var tempo = document.getElementById('tempo').value;
+        var meter = checkMeter();
         resetVariables();
         stopInterval();
-        id = setInterval(change, 60000/tempo);
+        id = setInterval(change, (60000/tempo)/meter);
     }
 
     function change() {
