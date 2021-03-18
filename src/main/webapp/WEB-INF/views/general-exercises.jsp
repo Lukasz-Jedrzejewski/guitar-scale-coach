@@ -16,7 +16,17 @@
     <section>
         <article>
             <h1>Here are some general exercises. You should practice everyday!</h1>
-            <h3>Spider</h3>
+            <div id="exercise-header">
+                <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+                <div class="single-ex">
+                    <h2>Spider</h2>
+                </div>
+                <div class="single-ex">
+                    <h2>Backward spider</h2>
+                </div>
+                <a class="next" onclick="plusSlides(1)">&#10095;</a>
+            </div>
+            <div>
                 <input id="tempo" defaultValue="60" type="number" value="60" min="60" max="240" oninput="validateTempo()">
                 <span class="validity"></span>
                 <select id="meter" oninput="checkMeter()">
@@ -25,7 +35,9 @@
                     <option value="3">3/4</option>
                     <option value="4">4/4</option>
                 </select>
-                <button id="tempo-btn" class="start-btn" onclick="executeSpider()">start</button>
+                <button id="spider-btn" class="start-btn" onclick="executeSpider()">start</button>
+            </div>
+            <div>
                 <table id="spider-tab">
                     <tbody>
                         <tr>
@@ -74,6 +86,7 @@
                         </tr>
                     </tbody>
                 </table>
+            </div>
         </article>
     </section>
     <%@include file="footer.jsp"%>

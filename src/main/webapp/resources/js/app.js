@@ -222,11 +222,11 @@ document.addEventListener("DOMContentLoaded", function() {
 
     function validateTempo() {
         var tempo = document.getElementById('tempo').value;
-        var tempoBtn = document.getElementById('tempo-btn');
+        var spiderBtn = document.getElementById('spider-btn');
         if(tempo < 60 || tempo > 240) {
-            tempoBtn.style.display = "none";
+            spiderBtn.style.display = "none";
         } else {
-            tempoBtn.style.display = "inline";
+            spiderBtn.style.display = "inline";
         }
     }
 
