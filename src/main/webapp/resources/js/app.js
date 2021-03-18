@@ -7,6 +7,7 @@ document.addEventListener("DOMContentLoaded", function() {
     window.executeSpider = executeSpider;
     window.validateTempo = validateTempo;
     window.checkMeter = checkMeter;
+    window.plusSlides = plusSlides;
 
     function changeSelected(selectObj) {
         var index = selectObj.selectedIndex;
@@ -222,7 +223,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
     function validateTempo() {
         var tempo = document.getElementById('tempo').value;
-        var spiderBtn = document.getElementById('spider-btn');
+        var spiderBtn = document.querySelector('.spider-btn');
         if(tempo < 60 || tempo > 240) {
             spiderBtn.style.display = "none";
         } else {
@@ -305,4 +306,25 @@ document.addEventListener("DOMContentLoaded", function() {
             direction = true;
         }
 
+    var slideIndex = 1;
+    showSlides(slideIndex);
+
+    function plusSlides(n) {
+      showSlides(slideIndex += n);
+    }
+
+    function currentSlide(n) {
+      showSlides(slideIndex = n);
+    }
+
+    function showSlides(n) {
+      var i;
+      var slides = document.getElementsByClassName("single-ex");
+      if (n > slides.length) {slideIndex = 1}
+      if (n < 1) {slideIndex = slides.length}
+      for (i = 0; i < slides.length; i++) {
+          slides[i].style.display = "none";
+      }
+      slides[slideIndex-1].style.display = "block";
+    }
 });

@@ -20,9 +20,11 @@
                 <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
                 <div class="single-ex">
                     <h2>Spider</h2>
+                    <button id="spider-btn" class="start-btn" onclick="executeSpider()">start</button>
                 </div>
                 <div class="single-ex">
                     <h2>Backward spider</h2>
+                    <button id="back-spider-btn" class="start-btn" onclick="executeBackwardSpider()">start</button>
                 </div>
                 <a class="next" onclick="plusSlides(1)">&#10095;</a>
             </div>
@@ -35,7 +37,6 @@
                     <option value="3">3/4</option>
                     <option value="4">4/4</option>
                 </select>
-                <button id="spider-btn" class="start-btn" onclick="executeSpider()">start</button>
             </div>
             <div>
                 <table id="spider-tab">

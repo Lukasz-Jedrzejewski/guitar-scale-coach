@@ -146,8 +146,13 @@ input:valid+span:after {
     align-items: center;
 }
 
+.single-ex {
+    display: none;
+    text-align: center;
+}
+
 .single-ex h2 {
-    margin: 20px;
+    margin: 5px;
     color: white;
 }
 
@@ -156,7 +161,7 @@ input:valid+span:after {
     padding: 12px;
     color: white;
     font-weight: bold;
-    font-size: 45px;
+    font-size: 65px;
     transition: 0.3s ease;
     border-radius: 6px;
     user-select: none;
