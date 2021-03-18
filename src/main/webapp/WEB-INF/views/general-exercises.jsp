@@ -24,7 +24,7 @@
                 </div>
                 <div class="single-ex">
                     <h2>Backward spider</h2>
-                    <button id="back-spider-btn" class="start-btn" onclick="executeBackwardSpider()">start</button>
+                    <div id="back-spider-btn" class="start-btn" onclick="executeBackwardSpider()">start</div>
                 </div>
                 <a class="next" onclick="plusSlides(1)">&#10095;</a>
             </div>
