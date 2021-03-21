@@ -8,6 +8,7 @@ document.addEventListener("DOMContentLoaded", function() {
     window.validateTempo = validateTempo;
     window.checkMeter = checkMeter;
     window.plusSlides = plusSlides;
+    window.executeBackwardSpider =executeBackwardSpider;
 
     function changeSelected(selectObj) {
         var index = selectObj.selectedIndex;
@@ -291,7 +292,7 @@ document.addEventListener("DOMContentLoaded", function() {
         }
         if (l == 23) {
             stopInterval();
-            resetVariables();
+            executeSpider();
             }
         }
 
@@ -330,9 +331,9 @@ document.addEventListener("DOMContentLoaded", function() {
     }
 
     function executeBackwardSpider() {
+        resetVariables(6,25,0,25,false);
         var tempo = document.getElementById('tempo').value;
         var meter = checkMeter();
-        resetVariables();
         stopInterval();
         id = setInterval(runBackward, (60000/tempo)/meter);
     }
@@ -342,11 +343,47 @@ document.addEventListener("DOMContentLoaded", function() {
         var rows = tab.rows;
         var cols = tab.rows[i].cells;
         var current = tab.rows[i].cells[j];
-        if (direction) {
+        if (!direction) {
         current.classList.add('highlight');
         setTimeout(() => {
             current.classList.remove('highlight');
         }, 100)
+        j--;
+        k++;
+        if (k == 4) {
+            i--;
+            j = l;
+            k = 0;
+        } if (i == 0) {
+            l -= 1;
+            k = 0;
+            j = l;
+            i++;
+            direction = true;
+        }
+        } else {
+        current.classList.add('highlight');
+        setTimeout(() => {
+            current.classList.remove('highlight');
+        }, 100)
+        j--;
+        k++;
+        if (k == 4) {
+            i++;
+            j = l;
+            k = 0;
+        }
+        if (i == rows.length-1) {
+            l -= 1;
+            k = 0;
+            j = l;
+            i--;
+            direction = false;
+        }
+        }
+        if (l == 4) {
+            stopInterval();
+            executeBackwardSpider();
         }
     }
 });
