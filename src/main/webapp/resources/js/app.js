@@ -223,7 +223,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
     function validateTempo() {
         var tempo = document.getElementById('tempo').value;
-        var spiderBtn = document.querySelector('.spider-btn');
+        var spiderBtn = document.querySelector('#spider-btn');
         if(tempo < 60 || tempo > 240) {
             spiderBtn.style.display = "none";
         } else {
@@ -237,9 +237,10 @@ document.addEventListener("DOMContentLoaded", function() {
     }
 
     function executeSpider() {
+        resetVariables(1,2,0,2,true);
+        console.log(i);
         var tempo = document.getElementById('tempo').value;
         var meter = checkMeter();
-        resetVariables();
         stopInterval();
         id = setInterval(change, (60000/tempo)/meter);
     }
@@ -298,12 +299,12 @@ document.addEventListener("DOMContentLoaded", function() {
             clearInterval(id);
         }
 
-        function resetVariables() {
-            i = 1;
-            j = 2;
-            k = 0;
-            l = 2;
-            direction = true;
+        function resetVariables(a, b, c, d, direct) {
+            i = a;
+            j = b;
+            k = c;
+            l = d;
+            direction = direct;
         }
 
     var slideIndex = 1;
@@ -326,5 +327,26 @@ document.addEventListener("DOMContentLoaded", function() {
           slides[i].style.display = "none";
       }
       slides[slideIndex-1].style.display = "block";
+    }
+
+    function executeBackwardSpider() {
+        var tempo = document.getElementById('tempo').value;
+        var meter = checkMeter();
+        resetVariables();
+        stopInterval();
+        id = setInterval(runBackward, (60000/tempo)/meter);
+    }
+
+    function runBackward() {
+        var tab = document.getElementById('spider-tab');
+        var rows = tab.rows;
+        var cols = tab.rows[i].cells;
+        var current = tab.rows[i].cells[j];
+        if (direction) {
+        current.classList.add('highlight');
+        setTimeout(() => {
+            current.classList.remove('highlight');
+        }, 100)
+        }
     }
 });
