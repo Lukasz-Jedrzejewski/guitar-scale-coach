@@ -215,10 +215,10 @@ document.addEventListener("DOMContentLoaded", function() {
 
     var soundsTable = readSounds();
 
-    var i = 1;
-    var j = 2;
-    var k = 0;
-    var l = 2;
+    var string = 1;
+    var fret = 2;
+    var counter = 0;
+    var position = 2;
     var direction = true;
     var id = 0;
 
@@ -238,36 +238,35 @@ document.addEventListener("DOMContentLoaded", function() {
     }
 
     function executeSpider() {
-        resetVariables(1,2,0,2,true);
-        console.log(i);
+        resetVariables(6,2,0,2,false);
         var tempo = document.getElementById('tempo').value;
         var meter = checkMeter();
         stopInterval();
-        id = setInterval(change, (60000/tempo)/meter);
+        id = setInterval(runSpider, (60000/tempo)/meter);
     }
 
-    function change() {
+    function runSpider() {
         var tab = document.getElementById('spider-tab');
         var rows = tab.rows;
-        var cols = tab.rows[i].cells;
-        var current = tab.rows[i].cells[j];
+        var cols = tab.rows[string].cells;
+        var current = tab.rows[string].cells[fret];
         if (direction) {
         current.classList.add('highlight');
         setTimeout(() => {
             current.classList.remove('highlight');
         }, 100)
-        j++;
-        k++;
-        if (k == 4) {
-            i++;
-            j = l;
-            k = 0;
+        fret++;
+        counter++;
+        if (counter == 4) {
+            string++;
+            fret = position;
+            counter = 0;
             }
-        if (i == rows.length-1) {
-            l += 1;
-            k = 0;
-            j = l;
-            i--;
+        if (string == rows.length-1) {
+            position += 1;
+            counter = 0;
+            fret = position;
+            string--;
             direction = false;
             }
         } else {
@@ -275,22 +274,22 @@ document.addEventListener("DOMContentLoaded", function() {
         setTimeout(() => {
             current.classList.remove('highlight');
         }, 100)
-        k++;
-        j++;
-        if (k == 4) {
-            i--;
-            j = l;
-            k = 0;
+        counter++;
+        fret++;
+        if (counter == 4) {
+            string--;
+            fret = position;
+            counter = 0;
             }
-        if (i == 0) {
-            l += 1;
-            k = 0;
-            j = l;
-            i++;
+        if (string == 0) {
+            position += 1;
+            counter = 0;
+            fret = position;
+            string++;
             direction = true;
             }
         }
-        if (l == 23) {
+        if (position == 23) {
             stopInterval();
             executeSpider();
             }
@@ -300,11 +299,11 @@ document.addEventListener("DOMContentLoaded", function() {
             clearInterval(id);
         }
 
-        function resetVariables(a, b, c, d, direct) {
-            i = a;
-            j = b;
-            k = c;
-            l = d;
+        function resetVariables(s, f, c, p, direct) {
+            string = s;
+            fret = f;
+            counter = c;
+            position = p;
             direction = direct;
         }
 
@@ -335,53 +334,53 @@ document.addEventListener("DOMContentLoaded", function() {
         var tempo = document.getElementById('tempo').value;
         var meter = checkMeter();
         stopInterval();
-        id = setInterval(runBackward, (60000/tempo)/meter);
+        id = setInterval(runBackwardSpider, (60000/tempo)/meter);
     }
 
-    function runBackward() {
+    function runBackwardSpider() {
         var tab = document.getElementById('spider-tab');
         var rows = tab.rows;
-        var cols = tab.rows[i].cells;
-        var current = tab.rows[i].cells[j];
+        var cols = tab.rows[string].cells;
+        var current = tab.rows[string].cells[fret];
         if (!direction) {
         current.classList.add('highlight');
         setTimeout(() => {
             current.classList.remove('highlight');
         }, 100)
-        j--;
-        k++;
-        if (k == 4) {
-            i--;
-            j = l;
-            k = 0;
-        } if (i == 0) {
-            l -= 1;
-            k = 0;
-            j = l;
-            i++;
+        fret--;
+        counter++;
+        if (counter == 4) {
+            string--;
+            fret = position;
+            counter = 0;
+        } if (string == 0) {
+            position -= 1;
+            counter = 0;
+            fret = position;
+            string++;
             direction = true;
-        }
+            }
         } else {
         current.classList.add('highlight');
         setTimeout(() => {
             current.classList.remove('highlight');
         }, 100)
-        j--;
-        k++;
-        if (k == 4) {
-            i++;
-            j = l;
-            k = 0;
+        fret--;
+        counter++;
+        if (counter == 4) {
+            string++;
+            fret = position;
+            counter = 0;
         }
-        if (i == rows.length-1) {
-            l -= 1;
-            k = 0;
-            j = l;
-            i--;
+        if (string == rows.length-1) {
+            position -= 1;
+            counter = 0;
+            fret = position;
+            string--;
             direction = false;
         }
         }
-        if (l == 4) {
+        if (position == 4) {
             stopInterval();
             executeBackwardSpider();
         }
