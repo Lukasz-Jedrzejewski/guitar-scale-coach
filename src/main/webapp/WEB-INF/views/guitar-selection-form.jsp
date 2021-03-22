@@ -9,7 +9,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Index</title>
+    <title>Guitar selection</title>
 </head>
 <body>
     <%@include file="header.jsp"%>

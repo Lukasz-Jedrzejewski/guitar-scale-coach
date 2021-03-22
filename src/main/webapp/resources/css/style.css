@@ -170,6 +170,7 @@ input:valid+span:after {
 }
 
 .start-btn {
+    cursor: pointer;
     height: 50px;
     width: 50px;
     background: green;
