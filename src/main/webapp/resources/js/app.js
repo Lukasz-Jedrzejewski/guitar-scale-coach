@@ -4,6 +4,11 @@ document.addEventListener("DOMContentLoaded", function() {
     window.fillIn = fillIn;
     window.test = test;
     window.hide = hide;
+    window.executeSpider = executeSpider;
+    window.validateTempo = validateTempo;
+    window.checkMeter = checkMeter;
+    window.plusSlides = plusSlides;
+    window.executeBackwardSpider =executeBackwardSpider;
 
     function changeSelected(selectObj) {
         var index = selectObj.selectedIndex;
@@ -101,19 +106,28 @@ document.addEventListener("DOMContentLoaded", function() {
     }
 
     function readSounds() {
-        var opts = document.querySelector("#t-s").options;
-        var sounds = [];
-        for (i = 0; i < opts.length; i++) {
-            var item = opts[i].innerHTML;
-            if (item.length <= 2) {
-                sounds.push(item);
-            }
+        try {
+            var opts = document.querySelector("#t-s").options;
+            var sounds = [];
+                for (i = 0; i < opts.length; i++) {
+                    var item = opts[i].innerHTML;
+                    if (item.length <= 2) {
+                        sounds.push(item);
+                    }
+                }
+            return sounds;
+        } catch {
+            console.log("Element not exist.");
         }
-        return sounds;
+
     }
 
-    var scalePart = document.getElementById('scale');
-    scalePart.style.display = 'none';
+    try {
+        var scalePart = document.getElementById('scale');
+        scalePart.style.display = 'none';
+    } catch {
+        console.log("Element not exist.")
+    }
 
     function scaleDefinitionVisibility () {
         var scalePart = document.getElementById('scale');
@@ -194,4 +208,174 @@ document.addEventListener("DOMContentLoaded", function() {
 
     var soundsTable = readSounds();
 
+    var string = 1;
+    var fret = 2;
+    var counter = 0;
+    var position = 2;
+    var direction = true;
+    var id = 0;
+
+    function validateTempo() {
+        var tempo = document.getElementById('tempo').value;
+        var spiderBtn = document.querySelector('#spider-btn');
+        if(tempo < 60 || tempo > 240) {
+            spiderBtn.style.display = "none";
+        } else {
+            spiderBtn.style.display = "inline";
+        }
+    }
+
+    function checkMeter() {
+        var meter = document.getElementById('meter').value;
+        return meter;
+    }
+
+    function executeSpider() {
+        resetVariables(6,2,0,2,false);
+        var tempo = document.getElementById('tempo').value;
+        var meter = checkMeter();
+        stopInterval();
+        id = setInterval(runSpider, (60000/tempo)/meter);
+    }
+
+    function runSpider() {
+        var tab = document.getElementById('spider-tab');
+        var rows = tab.rows;
+        var cols = tab.rows[string].cells;
+        var current = tab.rows[string].cells[fret];
+        if (direction) {
+        current.classList.add('highlight');
+        setTimeout(() => {
+            current.classList.remove('highlight');
+        }, 100)
+        fret++;
+        counter++;
+        if (counter == 4) {
+            string++;
+            fret = position;
+            counter = 0;
+            }
+        if (string == rows.length-1) {
+            position += 1;
+            counter = 0;
+            fret = position;
+            string--;
+            direction = false;
+            }
+        } else {
+        current.classList.add('highlight');
+        setTimeout(() => {
+            current.classList.remove('highlight');
+        }, 100)
+        counter++;
+        fret++;
+        if (counter == 4) {
+            string--;
+            fret = position;
+            counter = 0;
+            }
+        if (string == 0) {
+            position += 1;
+            counter = 0;
+            fret = position;
+            string++;
+            direction = true;
+            }
+        }
+        if (position == 23) {
+            stopInterval();
+            executeSpider();
+            }
+        }
+
+        function stopInterval() {
+            clearInterval(id);
+        }
+
+        function resetVariables(s, f, c, p, direct) {
+            string = s;
+            fret = f;
+            counter = c;
+            position = p;
+            direction = direct;
+        }
+
+    var slideIndex = 1;
+    showSlides(slideIndex);
+
+    function plusSlides(n) {
+      showSlides(slideIndex += n);
+    }
+
+    function currentSlide(n) {
+      showSlides(slideIndex = n);
+    }
+
+    function showSlides(n) {
+      var i;
+      var slides = document.getElementsByClassName("single-ex");
+      if (n > slides.length) {slideIndex = 1}
+      if (n < 1) {slideIndex = slides.length}
+      for (i = 0; i < slides.length; i++) {
+          slides[i].style.display = "none";
+      }
+      slides[slideIndex-1].style.display = "block";
+    }
+
+    function executeBackwardSpider() {
+        resetVariables(6,25,0,25,false);
+        var tempo = document.getElementById('tempo').value;
+        var meter = checkMeter();
+        stopInterval();
+        id = setInterval(runBackwardSpider, (60000/tempo)/meter);
+    }
+
+    function runBackwardSpider() {
+        var tab = document.getElementById('spider-tab');
+        var rows = tab.rows;
+        var cols = tab.rows[string].cells;
+        var current = tab.rows[string].cells[fret];
+        if (!direction) {
+        current.classList.add('highlight');
+        setTimeout(() => {
+            current.classList.remove('highlight');
+        }, 100)
+        fret--;
+        counter++;
+        if (counter == 4) {
+            string--;
+            fret = position;
+            counter = 0;
+        } if (string == 0) {
+            position -= 1;
+            counter = 0;
+            fret = position;
+            string++;
+            direction = true;
+            }
+        } else {
+        current.classList.add('highlight');
+        setTimeout(() => {
+            current.classList.remove('highlight');
+        }, 100)
+        fret--;
+        counter++;
+        if (counter == 4) {
+            string++;
+            fret = position;
+            counter = 0;
+        }
+        if (string == rows.length-1) {
+            position -= 1;
+            counter = 0;
+            fret = position;
+            string--;
+            direction = false;
+        }
+        }
+        if (position == 4) {
+            stopInterval();
+            executeBackwardSpider();
+        }
+    }
 });

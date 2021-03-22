@@ -1,6 +1,6 @@
 # Guitar-scale-coach
 
-The main goal when creating an application is to improve programming skills in pure Java. 
+The main goal when creating an application is to improve programming skills in pure Java and JavaScript. 
 An idea born out of a passion for programming and guitar.
 
 An application whose idea is to help beginner guitarists learn guitar scales and navigate the guitar fretboard.
