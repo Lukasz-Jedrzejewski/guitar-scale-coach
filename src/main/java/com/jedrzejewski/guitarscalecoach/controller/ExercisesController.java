@@ -14,7 +14,6 @@ public class ExercisesController {
     public String generalExercisesAction(Model model) {
         ExercisesModel exercisesModel = new ExercisesModel();
         model.addAttribute("guitar", exercisesModel);
-        System.out.println(exercisesModel.getTuning());
         return "general-exercises";
     }
 }

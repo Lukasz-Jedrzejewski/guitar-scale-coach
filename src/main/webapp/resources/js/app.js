@@ -9,6 +9,7 @@ document.addEventListener("DOMContentLoaded", function() {
     window.checkMeter = checkMeter;
     window.plusSlides = plusSlides;
     window.executeBackwardSpider =executeBackwardSpider;
+    window.showPopup = showPopup;
 
     function changeSelected(selectObj) {
         var index = selectObj.selectedIndex;
@@ -376,6 +377,16 @@ document.addEventListener("DOMContentLoaded", function() {
         if (position == 4) {
             stopInterval();
             executeBackwardSpider();
+        }
+    }
+
+    function showPopup(select) {
+        var span = document.createElement('span');
+        span.className = "popupText";
+        span.innerHTML = 'example text';
+        select.appendChild(span);
+        select.onmouseleave = function(){
+            span.remove();
         }
     }
 });
