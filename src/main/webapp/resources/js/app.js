@@ -380,9 +380,19 @@ document.addEventListener("DOMContentLoaded", function() {
         }
     }
 
+    var cursorX;
+    var cursorY;
+    document.onmousemove = function(e){
+        cursorX = e.pageX;
+        cursorY = e.pageY;
+    }
+
     function showPopup(select) {
         var span = document.createElement('span');
         span.className = "popupText";
+        span.style.position = "absolute";
+        span.style.left = cursorX+20;
+        span.style.top = cursorY-50;
         span.innerHTML = 'example text';
         select.appendChild(span);
         select.onmouseleave = function(){
