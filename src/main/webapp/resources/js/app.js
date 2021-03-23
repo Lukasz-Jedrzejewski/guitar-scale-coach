@@ -387,13 +387,66 @@ document.addEventListener("DOMContentLoaded", function() {
         cursorY = e.pageY;
     }
 
+    function checkId(element) {
+        return element.id;
+    }
+
+    var text;
+
+    function setPopupText(element) {
+        switch (checkId(element)) {
+            case "switch":
+                text = "switch exercise";
+                break;
+            case "ex-name":
+                text = "exercise name";
+                break;
+            case "spider-btn":
+                text = "run exercise";
+                break;
+            case "tempo-container":
+                text = "setting tempo";
+                break;
+            case "meter-container":
+                text = "setting meter";
+                break;
+            case "tune-head":
+                text = "string tuning information";
+                break;
+            case "str-head":
+                text = "string thickness information";
+                break;
+            case "fr-head":
+                text = "information about the fret number";
+                break;
+            case "tune-sound":
+                text = "tuning of a given string";
+                break;
+            case "dot":
+                text = "thickness of a given string";
+                break;
+            case "sound":
+                text = "sound at the given fret";
+                break;
+            case "single-dot":
+                text = "marking a particular fret, like on your guitar";
+                break;
+            case "double-dot":
+                text = "marking a particular fret (12 and 24), like on your guitar";
+                break;
+            default:
+                text = "default information";
+        }
+    }
+
     function showPopup(select) {
+        setPopupText(select);
         var span = document.createElement('span');
         span.className = "popupText";
         span.style.position = "absolute";
         span.style.left = cursorX+20;
         span.style.top = cursorY-50;
-        span.innerHTML = 'example text';
+        span.innerHTML = text;
         select.appendChild(span);
         select.onmouseleave = function(){
             span.remove();

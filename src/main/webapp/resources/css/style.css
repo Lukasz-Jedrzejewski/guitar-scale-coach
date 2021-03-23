@@ -188,9 +188,9 @@ input:valid+span:after {
     display: block;
     padding: 20px;
     font-size: 12px;
-    font-weight: 400;
+    font-weight: 600;
     color: black;
     background: yellow;
-    opacity: 0.7;
+    opacity: 0.8;
     border-radius: 10px;
 }
