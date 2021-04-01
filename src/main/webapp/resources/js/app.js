@@ -134,7 +134,7 @@ document.addEventListener("DOMContentLoaded", function() {
         var scalePart = document.getElementById('scale');
         var stringsDefinitions = checkStringsDefinition();
         if (stringsDefinitions) {
-            scalePart.style.display = 'block';
+            scalePart.style.display = 'flex';
         }
     }
 

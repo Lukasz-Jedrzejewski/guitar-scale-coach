@@ -132,11 +132,13 @@ td {
 input:invalid+span:after {
   content: '✖';
   padding-left: 5px;
+  color: red;
 }
 
 input:valid+span:after {
   content: '✓';
   padding-left: 5px;
+  color: green;
 }
 
 #exercise-header {
@@ -184,7 +186,7 @@ input:valid+span:after {
     font-weight: 900;
 }
 
-.popupText {
+.popupText, #valid-guitar {
     display: block;
     padding: 20px;
     font-size: 12px;
@@ -194,3 +196,47 @@ input:valid+span:after {
     opacity: 0.8;
     border-radius: 10px;
 }
+
+label {
+    color: white;
+}
+
+#selection {
+    background: #228B22;
+}
+
+.form-field {
+    justify-content: center;
+    display: flex;
+}
+
+.checkbox {
+    width: 70px;
+    margin: 5px;
+    padding: 5px;
+    font-size: 22px;
+    border: solid 1px silver;
+    border-radius: 10px;
+    background: #191970;
+}
+
+.checkbox input, .checkbox label {
+    vertical-align:middle;
+}
+
+#str, #fr, .t-select, .submit-btn {
+    background: black;
+    color: white;
+    width: 190px;
+    text-align-last: center;
+    border-radius: 20px;
+    cursor: pointer;
+}
+
+.submit-btn {
+    width: 200px;
+    height: 50px;
+}
+
+
+
