@@ -131,14 +131,16 @@ td {
 
 input:invalid+span:after {
   content: '✖';
-  padding-left: 5px;
+  padding-left: 2px;
   color: red;
+  font-weight: 900;
 }
 
 input:valid+span:after {
   content: '✓';
-  padding-left: 5px;
+  padding-left: 2px;
   color: green;
+  font-weight: 900;
 }
 
 #exercise-header {
@@ -236,6 +238,24 @@ label {
 .submit-btn {
     width: 200px;
     height: 50px;
+}
+
+.speed-params {
+    display: flex;
+    justify-content: center;
+    padding: 10px;
+    width: 50%;
+    margin: auto;
+}
+
+#tempo, #meter {
+    background: black;
+        color: white;
+        width: 190px;
+        text-align-last: center;
+        border-radius: 20px;
+        cursor: pointer;
+        margin: 0 10px;
 }
 
 

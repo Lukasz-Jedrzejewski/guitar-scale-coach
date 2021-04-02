@@ -404,10 +404,10 @@ document.addEventListener("DOMContentLoaded", function() {
             case "spider-btn":
                 text = "run exercise";
                 break;
-            case "tempo-container":
+            case "tempo":
                 text = "setting tempo";
                 break;
-            case "meter-container":
+            case "meter":
                 text = "setting meter";
                 break;
             case "tune-head":
@@ -447,7 +447,7 @@ document.addEventListener("DOMContentLoaded", function() {
         span.style.left = cursorX+20;
         span.style.top = cursorY-50;
         span.innerHTML = text;
-        select.appendChild(span);
+        document.body.appendChild(span);
         select.onmouseleave = function(){
             span.remove();
         }

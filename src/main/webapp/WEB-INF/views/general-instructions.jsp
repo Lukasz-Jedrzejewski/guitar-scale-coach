@@ -26,20 +26,7 @@
                     </div>
                     <a class="next" id="switch" onmouseenter="showPopup(this);">&#10095;</a>
                 </div>
-                <div>
-                    <div id="tempo-container" onmouseenter="showPopup(this);">
-                        <input id="tempo" defaultValue="60" type="number" value="60" min="60" max="240">
-                    </div>
-                    <span class="validity"></span>
-                    <div id="meter-container" onmouseenter="showPopup(this);">
-                        <select id="meter">
-                            <option value="1">1/4</option>
-                            <option value="2">2/4</option>
-                            <option value="3">3/4</option>
-                            <option value="4">4/4</option>
-                        </select>
-                    </div>
-                </div>
+                <%@include file="speed-params.jsp"%>
                 <div>
                     <table id="spider-tab">
                         <tbody>
