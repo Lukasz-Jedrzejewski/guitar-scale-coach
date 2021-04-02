@@ -17,6 +17,10 @@ li {
     list-style-type: none;
 }
 
+h1 {
+    font-size: 1.8em;
+}
+
 nav {
     margin: 0;
     padding: 0;
@@ -226,7 +230,7 @@ label {
     vertical-align:middle;
 }
 
-#str, #fr, .t-select, .submit-btn {
+#str, #fr, .t-select, .submit-btn, #tempo, #meter {
     background: black;
     color: white;
     width: 190px;
@@ -249,14 +253,15 @@ label {
 }
 
 #tempo, #meter {
-    background: black;
-        color: white;
-        width: 190px;
-        text-align-last: center;
-        border-radius: 20px;
-        cursor: pointer;
-        margin: 0 10px;
+    margin: 0 10px;
 }
+
+.info-head {
+    margin: 5px auto;
+    text-align: center;
+}
+
+
 
 
 

@@ -16,8 +16,10 @@
     <section>
         <article>
             <div>
-                <h1>Please read the instructions below to get the most out of my site</h1>
-                <h2>Instructions for general exercises</h2>
+                <div class="info-head">
+                    <h1>Please read the instructions below to get the most out of my site</h1>
+                    <h2>Instructions for general exercises</h2>
+                </div>
                 <div id="exercise-header">
                     <a class="prev" id="switch" onmouseenter="showPopup(this);">&#10094;</a>
                     <div class="single-ex">

@@ -15,7 +15,9 @@
     <%@include file="navigation-bar.jsp"%>
     <section>
         <article>
-            <h1>Here are some general exercises. You should practice everyday!</h1>
+            <div class="info-head">
+                <h1>Here are some general exercises. You should practice everyday!</h1>
+            </div>
             <div id="exercise-header">
                 <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
                 <div class="single-ex">
