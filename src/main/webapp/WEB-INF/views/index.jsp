@@ -15,8 +15,10 @@
     <%@include file="navigation-bar.jsp"%>
     <section>
         <article>
-            <h1>Idea of ​​the project</h1>
-            <p>Here will be a description of the project assumptions</p>
+            <div class="info-head">
+                <h1>Idea of ​​the project</h1>
+                <p>Here will be a description of the project assumptions</p>
+            </div>
         </article>
     </section>
     <%@include file="footer.jsp"%>

@@ -15,6 +15,9 @@
     <%@include file="header.jsp"%>
     <%@include file="navigation-bar.jsp"%>
     <section>
+        <div class="info-head">
+            <h1>Define your guitar and the scale you are looking for</h1>
+        </div>
         <div id="selection">
             <form:form method="post" action="/practice/guitar-selection-result" modelAttribute="guitar">
                 <div class="form-field">
