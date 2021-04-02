@@ -447,9 +447,18 @@ document.addEventListener("DOMContentLoaded", function() {
         span.style.left = cursorX+20;
         span.style.top = cursorY-50;
         span.innerHTML = text;
-        document.body.appendChild(span);
+        if (checkAddress()) {
+            document.body.appendChild(span);
+        }
         select.onmouseleave = function(){
             span.remove();
         }
+    }
+
+    function checkAddress() {
+        if(window.location.href == "http://localhost:8080/instructions/general-instructions") {
+            return true;
+        }
+        return false;
     }
 });
