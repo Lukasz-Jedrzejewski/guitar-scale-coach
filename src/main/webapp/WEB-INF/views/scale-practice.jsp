@@ -8,14 +8,16 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Index</title>
+    <title>Practice scale page</title>
 </head>
 <body>
     <%@include file="header.jsp"%>
     <%@include file="navigation-bar.jsp"%>
     <section>
         <article>
-            <h1>Your fretboard looks like this</h1>
+            <div class="info-head">
+                <h1>Your fretboard looks like this</h1>
+            </div>
                 <table>
                     <tbody>
                         <tr>

@@ -7,13 +7,13 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
-@RequestMapping("/exercises")
-public class ExercisesController {
+@RequestMapping("/instructions")
+public class InstructionsController {
 
-    @GetMapping("/general-exercises")
-    public String generalExercisesAction(Model model) {
+    @GetMapping("/general-instructions")
+    public String instructionsAction(Model model) {
         ExercisesModel exercisesModel = new ExercisesModel();
         model.addAttribute("guitar", exercisesModel);
-        return "general-exercises";
+        return "general-instructions";
     }
 }
