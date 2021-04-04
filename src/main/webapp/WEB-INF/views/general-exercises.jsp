@@ -8,14 +8,16 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Index</title>
+    <title>General exercises</title>
 </head>
 <body>
     <%@include file="header.jsp"%>
     <%@include file="navigation-bar.jsp"%>
     <section>
         <article>
-            <h1>Here are some general exercises. You should practice everyday!</h1>
+            <div class="info-head">
+                <h1>Here are some general exercises. You should practice everyday!</h1>
+            </div>
             <div id="exercise-header">
                 <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
                 <div class="single-ex">
@@ -28,17 +30,8 @@
                 </div>
                 <a class="next" onclick="plusSlides(1)">&#10095;</a>
             </div>
-            <div>
-                <input id="tempo" defaultValue="60" type="number" value="60" min="60" max="240" oninput="validateTempo()">
-                <span class="validity"></span>
-                <select id="meter" oninput="checkMeter()">
-                    <option value="1">1/4</option>
-                    <option value="2">2/4</option>
-                    <option value="3">3/4</option>
-                    <option value="4">4/4</option>
-                </select>
-            </div>
-            <div>
+            <%@include file="speed-params.jsp"%>
+            <div id="selection">
                 <table id="spider-tab">
                     <tbody>
                         <tr>
@@ -59,7 +52,7 @@
                                 <c:set var="f" value="${guitar.NUMBER_OF_FRETS}"/>
                                 <c:set var="list" value="${guitar.fill(s, f)}"/>
                                 <c:forEach items="${list}" var="cs">
-                                    <td>${cs.toString()}</td>
+                                    <td><hr><p class="test">${cs.toString()}</p></td>
                                 </c:forEach>
                             </tr>
                         </c:forEach>
