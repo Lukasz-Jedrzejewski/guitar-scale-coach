@@ -52,7 +52,7 @@
                                 <c:set var="f" value="${guitar.NUMBER_OF_FRETS}"/>
                                 <c:set var="list" value="${guitar.fill(s, f)}"/>
                                 <c:forEach items="${list}" var="cs">
-                                    <td>${cs.toString()}</td>
+                                    <td><hr><p class="test">${cs.toString()}</p></td>
                                 </c:forEach>
                             </tr>
                         </c:forEach>

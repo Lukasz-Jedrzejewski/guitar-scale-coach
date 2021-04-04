@@ -51,7 +51,7 @@
                                 <c:set var="f" value="${guitar.NUMBER_OF_FRETS}"/>
                                 <c:set var="list" value="${guitar.fill(s, f)}"/>
                                 <c:forEach items="${list}" var="cs">
-                                    <td id="sound" onmouseenter="showPopup(this);">${cs.toString()}</td>
+                                    <td id="sound" onmouseenter="showPopup(this);"><hr><p class="test">${cs.toString()}</p></td>
                                 </c:forEach>
                             </tr>
                             </c:forEach>
