@@ -31,7 +31,7 @@
                 <a class="next" onclick="plusSlides(1)">&#10095;</a>
             </div>
             <%@include file="speed-params.jsp"%>
-            <div>
+            <div id="selection">
                 <table id="spider-tab">
                     <tbody>
                         <tr>

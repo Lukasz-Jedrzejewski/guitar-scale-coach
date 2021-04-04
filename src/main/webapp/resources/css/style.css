@@ -216,7 +216,7 @@ label {
     color: white;
 }
 
-.form-field {
+.form-field, #selection {
     justify-content: center;
     display: flex;
 }
@@ -253,14 +253,14 @@ label {
     font-size: 20px;
     letter-spacing: 3px;
     text-transform: uppercase;
+    margin: 10px auto;
 }
 
 .speed-params, .guitar-type {
     display: flex;
     justify-content: center;
-    padding: 10px;
     width: 50%;
-    margin: auto;
+    margin: 10px auto;
 }
 
 #tempo, #meter {
