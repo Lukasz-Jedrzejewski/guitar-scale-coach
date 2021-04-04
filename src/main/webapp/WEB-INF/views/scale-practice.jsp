@@ -15,7 +15,9 @@
     <%@include file="navigation-bar.jsp"%>
     <section>
         <article>
-            <h1>Your fretboard looks like this</h1>
+            <div class="info-head">
+                <h1>Your fretboard looks like this</h1>
+            </div>
                 <table>
                     <tbody>
                         <tr>
